@@ -40,7 +40,7 @@ void bucketSort(vector<float> &arr, int n){
 }
 
 int main(){
-    vector<float> arr = {0.76, 0.74, 0.12, 0.15, 0.54, 0.42, 0.95, 0.87};
+    vector<float> arr = {0.76, 0.74, 0.12, 0.15, 0.54, 0.42, 0.95, 0.87, 0.85};
     int size = arr.size();
 
     cout<<"Original array: ";
