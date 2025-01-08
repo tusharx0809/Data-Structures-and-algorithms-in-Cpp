@@ -60,11 +60,34 @@ class LinkedList{
     void deleteFromBegenning(){
         if(!head){
             cout<<"List is empty!"<<endl;
+            return;
         }
         Node*temp = head;
         temp = temp->next;
         head = temp;
     }
+    void deleteFromEnd(){
+        if(!head){
+            cout<<"List is empty!"<<endl;
+            return;
+        }
+        if(!head->next){
+            delete head;
+            head = NULL;
+            return;
+        }
+
+        Node* temp = head;
+        //Traverse to second last node
+        while(temp->next->next){
+            temp = temp->next;
+        }
+        delete temp->next;
+        temp->next = NULL;
+
+    }
+
+
     void display(){
         if(!head){
             cout<<"List is empty!"<<endl;
@@ -93,10 +116,13 @@ int main(){
     }
     list1.display();//6 -> 4 -> 2 -> 0 -> 0 -> 2 -> 4 -> 6 -> NULL
 
-    list1.insertAtPosition(5,2);//6 -> 5 -> 4 -> 2 -> 0 -> NULL
+    list1.insertAtPosition(5,2);//6 -> 5 -> 4 -> 2 -> 0 -> 0 -> 2 -> 4 -> 6 -> NULL
     list1.display(); 
 
     list1.deleteFromBegenning();
-    list1.display(); //5 -> 4 -> 2 -> 0 -> NULL
+    list1.display(); //5 -> 4 -> 2 -> 0 -> 0 -> 2 -> 4 -> 6 -> NULL
+
+    list1.deleteFromEnd();
+    list1.display();//5 -> 4 -> 2 -> 0 -> 0 -> 2 -> 4 -> NULL
     return 0;
 }
