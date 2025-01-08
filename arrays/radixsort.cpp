@@ -36,7 +36,7 @@ void radixSort(vector<int> &arr, int size){
     }
 }
 int main(){
-    vector<int> arr = {904, 46, 5, 74, 62, 1};
+    vector<int> arr = {904, 46, 5, 74, 62, 1, 8};
     int size = arr.size();
 
     cout<<"Original Array: ";
