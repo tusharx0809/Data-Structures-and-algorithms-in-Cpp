@@ -22,6 +22,22 @@ class LinkedList{
         head = newNode;
     }
 
+    void insertAtEnd(int value){
+        Node* newNode = new Node();
+        newNode->data = value;
+        newNode->next = NULL;
+        if(head == NULL){
+            head=newNode;
+            newNode->next = NULL;
+        }else{
+            Node *temp = head;
+            while(temp->next != NULL){
+                temp = temp->next;
+            }
+            temp->next = newNode;
+        }
+    }
+
     void display(){
         if(!head){
             cout<<"List is empty!"<<endl;
@@ -41,7 +57,7 @@ int main(){
 
     list1.insertAtBeginning(10);
     list1.insertAtBeginning(20);
-
+    list1.insertAtEnd(30);
     list1.display();
     return 0;
 }
