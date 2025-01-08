@@ -82,23 +82,21 @@ class LinkedList{
 int main(){
     LinkedList list1;
     list1.display(); //List is empty!
-    list1.insertAtBeginning(1);
-    list1.display(); //1 -> NULL
-    list1.insertAtBeginning(2);
-    list1.display(); //2 -> 1 -> NULL
-    list1.insertAtBeginning(3);
-    list1.display(); //3 -> 2 -> 1 -> NULL
-    list1.insertAtBeginning(4);
-    list1.display(); //4 -> 3 -> 2 -> 1 -> NULL
-    list1.insertAtBeginning(10);
-    list1.display(); //10 -> NULL
-    list1.insertAtBeginning(20);
-    list1.display(); //20 -> 10 -> NULL 
-    list1.insertAtEnd(30);
-    list1.display(); //20 -> 10 -> 30 -> NULL
-    list1.insertAtPosition(5,2);
-    list1.display(); // 20 -> 5 -> 10 -> 30 -> NULL
+
+    for(int i=0;i<7;i+=2){
+        list1.insertAtBeginning(i);
+    }
+    list1.display();//6 -> 4 -> 2 -> 0 -> NULL
+
+     for(int i=0;i<7;i+=2){
+        list1.insertAtEnd(i); 
+    }
+    list1.display();//6 -> 4 -> 2 -> 0 -> 0 -> 2 -> 4 -> 6 -> NULL
+
+    list1.insertAtPosition(5,2);//6 -> 5 -> 4 -> 2 -> 0 -> NULL
+    list1.display(); 
+
     list1.deleteFromBegenning();
-    list1.display(); //5 -> 10 -> 30 -> NULL
+    list1.display(); //5 -> 4 -> 2 -> 0 -> NULL
     return 0;
 }
