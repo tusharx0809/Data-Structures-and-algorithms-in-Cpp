@@ -115,7 +115,7 @@ class LinkedList{
         Node* cur = head;
         Node* next = NULL;
 
-        while(cur != NULL){
+        while(cur){
             next = cur->next;
             cur->next = prev;
             prev = cur;
