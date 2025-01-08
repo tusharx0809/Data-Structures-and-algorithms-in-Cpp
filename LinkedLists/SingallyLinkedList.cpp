@@ -86,7 +86,19 @@ class LinkedList{
         temp->next = NULL;
 
     }
-
+    void deleteFromPosition(int position){
+        if(!head){
+            cout<<"List is empty!"<<endl;
+            return;
+        }
+        int pos = 1;
+        Node* temp = head;
+        while(position-1 != pos){
+            pos++;
+            temp = temp->next;
+        }
+        temp->next = temp->next->next;
+    }
 
     void display(){
         if(!head){
@@ -124,5 +136,8 @@ int main(){
 
     list1.deleteFromEnd();
     list1.display();//5 -> 4 -> 2 -> 0 -> 0 -> 2 -> 4 -> NULL
+
+    list1.deleteFromPosition(3);
+    list1.display(); //5 -> 4 -> 0 -> 0 -> 2 -> 4 -> NULL
     return 0;
 }
