@@ -97,7 +97,31 @@ class LinkedList{
             pos++;
             temp = temp->next;
         }
+        Node* delNode = temp->next;
         temp->next = temp->next->next;
+        delete delNode;
+    }
+
+    void reverse(){
+        if(!head){
+            cout<<"List is empty!"<<endl;
+            return;
+        }
+        if(head->next == NULL){
+            return;
+        }
+        
+        Node* prev = NULL;
+        Node* cur = head;
+        Node* next = NULL;
+
+        while(cur != NULL){
+            next = cur->next;
+            cur->next = prev;
+            prev = cur;
+            cur = next;
+        }
+        head = prev;
     }
 
     void display(){
@@ -139,5 +163,8 @@ int main(){
 
     list1.deleteFromPosition(3);
     list1.display(); //5 -> 4 -> 0 -> 0 -> 2 -> 4 -> NULL
+
+    list1.reverse();
+    list1.display(); //4 -> 2 -> 0 -> 0 -> 4 -> 5 -> NULL
     return 0;
 }
