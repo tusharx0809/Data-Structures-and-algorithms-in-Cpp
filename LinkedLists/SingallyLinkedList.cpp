@@ -124,6 +124,25 @@ class LinkedList{
         head = prev;
     }
 
+     void recursiveReverseHelper(Node* cur, Node*& newHead) {
+        if (!cur) {
+            return;
+        }
+        if (!cur->next) {
+            newHead = cur;
+            return;
+        }
+        recursiveReverseHelper(cur->next, newHead);
+        cur->next->next = cur;
+        cur->next = NULL;
+    }
+
+    void recursiveReverse() {
+        Node* newHead = NULL;
+        recursiveReverseHelper(head, newHead);
+        head = newHead;
+    }
+
     void display(){
         if(!head){
             cout<<"List is empty!"<<endl;
@@ -165,6 +184,9 @@ int main(){
     list1.display(); //5 -> 4 -> 0 -> 0 -> 2 -> 4 -> NULL
 
     list1.reverse();
-    list1.display(); //4 -> 2 -> 0 -> 0 -> 4 -> 5 -> NULL
+    list1.display(); //4 -> 2 -> 0 -> 0 -> 4 -> 5 -> NULL Reverse
+
+    list1.recursiveReverse();//5 -> 4 -> 0 -> 0 -> 2 -> 4 -> NULL Recursive Reverse
+    list1.display();
     return 0;
 }
