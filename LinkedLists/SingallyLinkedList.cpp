@@ -15,13 +15,13 @@ class LinkedList{
     
     LinkedList() : head(NULL) {} //Constructor intitializes head to NULL
 
+    //Insertion
     void insertAtBeginning(int value){
         Node* newNode = new Node();
         newNode->data = value;
         newNode->next = head;
         head = newNode;
     }
-
     void insertAtEnd(int value){
         Node* newNode = new Node();
         newNode->data = value;
@@ -37,7 +37,6 @@ class LinkedList{
             temp->next = newNode;
         }
     }
-
     void insertAtPosition(int value, int position){
         Node* newNode = new Node();
         newNode->data = value;
@@ -57,7 +56,15 @@ class LinkedList{
         newNode->next = temp->next;
         temp->next=newNode;
     }
-
+    //Deletion
+    void deleteFromBegenning(){
+        if(!head){
+            cout<<"List is empty!"<<endl;
+        }
+        Node*temp = head;
+        temp = temp->next;
+        head = temp;
+    }
     void display(){
         if(!head){
             cout<<"List is empty!"<<endl;
@@ -74,14 +81,16 @@ class LinkedList{
 
 int main(){
     LinkedList list1;
-    list1.display();
+    list1.display(); //List is empty!
     list1.insertAtBeginning(10);
-    list1.display();
+    list1.display(); //10 -> NULL
     list1.insertAtBeginning(20);
-    list1.display();
+    list1.display(); //20 -> 10 -> NULL 
     list1.insertAtEnd(30);
-    list1.display();
+    list1.display(); //20 -> 10 -> 30 -> NULL
     list1.insertAtPosition(5,2);
-    list1.display();
+    list1.display(); // 20 -> 5 -> 10 -> 30 -> NULL
+    list1.deleteFromBegenning();
+    list1.display(); //5 -> 10 -> 30 -> NULL
     return 0;
 }
