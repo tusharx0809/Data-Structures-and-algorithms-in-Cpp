@@ -38,6 +38,26 @@ class LinkedList{
         }
     }
 
+    void insertAtPosition(int value, int position){
+        Node* newNode = new Node();
+        newNode->data = value;
+        newNode->next = NULL;
+        if(head == NULL){
+            head = newNode;
+            newNode->next = NULL;
+        }
+
+        int pos = 1;
+
+        Node* temp = head;
+        while(position-1 != pos){
+            pos++;
+            temp = temp->next;
+        }
+        newNode->next = temp->next;
+        temp->next=newNode;
+    }
+
     void display(){
         if(!head){
             cout<<"List is empty!"<<endl;
@@ -54,10 +74,14 @@ class LinkedList{
 
 int main(){
     LinkedList list1;
-
+    list1.display();
     list1.insertAtBeginning(10);
+    list1.display();
     list1.insertAtBeginning(20);
+    list1.display();
     list1.insertAtEnd(30);
+    list1.display();
+    list1.insertAtPosition(5,2);
     list1.display();
     return 0;
 }
