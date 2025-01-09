@@ -95,7 +95,19 @@ public:
 
         delete temp;
     }
+    void deleteFromEnd(){
+        if(!head){
+            cout<<"List is empty!";
+            return;
+        }
+        Node* temp = head;
 
+        while(temp->next->next){ //Traverse till second last node
+            temp = temp->next;
+        }
+        delete temp->next;
+        temp->next = NULL;
+    }
 
 
     void display()
@@ -148,5 +160,8 @@ int main()
 
     list1.deleteFromBeginning(); 
     list1.display(); //NULL <-> 6 <-> 5 <-> 4 <-> 2 <-> 2 <-> 4 <-> 6 <-> NULL
+
+    list1.deleteFromEnd();
+    list1.display(); //NULL <-> 6 <-> 5 <-> 4 <-> 2 <-> 2 <-> 4 <-> NULL
     return 0;
 }
