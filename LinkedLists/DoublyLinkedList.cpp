@@ -1,55 +1,68 @@
-#include<iostream>
-#include<stdio.h>
-#include<stdlib.h>
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 using namespace std;
 
-struct Node{
+struct Node
+{
     int data;
-    Node* next = NULL;
-    Node* prev = NULL;
+    Node *next = NULL;
+    Node *prev = NULL;
 };
 
-class DoublyLinkedList{
-    Node* head;
+class DoublyLinkedList
+{
+    Node *head;
 
-    public:
-    DoublyLinkedList() : head(NULL) {}; //Constructor initializes head pointer to NULL;
+public:
+    DoublyLinkedList() : head(NULL) {}; // Constructor initializes head pointer to NULL;
 
-    void insertAtBeginning(int value){
-        Node* newNode = new Node();
+    void insertAtBeginning(int value)
+    {
+        Node *newNode = new Node();
         newNode->data = value;
         newNode->next = NULL;
         newNode->prev = NULL;
 
-        if(!head){
+        if (!head)
+        {
             head = newNode;
-        }else{
+        }
+        else
+        {
             newNode->next = head;
             head = newNode;
         }
-
     }
 
-    void display(){
-        if(!head){
-            cout<<"List is empty!"<<endl;
+    void display()
+    {
+        if (!head)
+        {
+            cout << "List is empty!" << endl;
         }
-        Node* temp = head;
-        cout<<"NULL <-> ";
-        while(temp){
-            cout<<temp->data<<" <-> ";
-            temp=temp->next;
+        Node *temp = head;
+        cout << "NULL <-> ";
+        while (temp)
+        {
+            cout << temp->data << " <-> ";
+            temp = temp->next;
         }
-        cout<<"NULL"<<endl;
+        cout << "NULL" << endl;
     }
 };
 
-int main(){
+int main()
+{
     DoublyLinkedList list1;
     list1.display();
 
-    for(int i=0;i<10;i+=2){
-        list1.insertAtBeginning(i);
+    for (int i = 0; i < 8; i += 2)
+    {
+        if (i > 0)
+        {
+            list1.insertAtBeginning(i);
+        }
     }
     list1.display();
     return 0;
