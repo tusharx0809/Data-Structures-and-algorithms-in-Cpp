@@ -108,6 +108,10 @@ public:
             cout << "List is empty!" << endl;
             return;
         }
+        if(position == 1){
+            head = head->next;
+            return;
+        }
         int pos = 1;
         Node *temp = head;
         while (position - 1 != pos)
