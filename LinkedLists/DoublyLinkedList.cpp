@@ -138,6 +138,9 @@ public:
         delete delNode;
     }
 
+    void reverse(){
+        
+    }
     void display()
     {
         if (!head)
@@ -193,5 +196,8 @@ int main()
 
     list1.deleteFromPosition(3);
     list1.display(); // NULL <-> 6 <-> 5 <-> 2 <-> 2 <-> 4 <-> NULL
+
+    list1.recursiveReverse();
+    list1.display();
     return 0;
 }
