@@ -160,6 +160,9 @@ int main(){
     list1.display(); //4 -> 3 -> 2 -> 1 -> 0 -> 0 -> 1 -> 2 -> 3 -> HEAD
 
     list1.deleteFromPosition(1);
-    list1.display();
+    list1.display(); //3 -> 2 -> 1 -> 0 -> 0 -> 1 -> 2 -> 3 -> HEAD
+
+    list1.insertAtBeginning(100);
+    list1.display(); //100 -> 3 -> 2 -> 1 -> 0 -> 0 -> 1 -> 2 -> 3 -> HEAD
     return 0;
 }
