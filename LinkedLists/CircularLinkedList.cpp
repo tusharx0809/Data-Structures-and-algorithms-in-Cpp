@@ -116,6 +116,33 @@ class CircularLinkedList{
         temp->next = temp->next->next;
         delete delNode;
     }
+    void reverse(){
+        if(!head){
+            cout<<"List is empty!";
+        }
+        if(!head->next){
+            return;
+        }
+        
+        Node* prevNode = NULL;
+        Node* cur = head;
+        Node* nextNode = NULL;
+        Node* last = head;
+
+        while(last->next != head){
+            last = last->next;
+        }
+        do{
+            nextNode = cur->next;
+            cur->next = prevNode;
+            prevNode = cur;
+            cur = nextNode;
+        }while(cur != head);
+
+        head->next = prevNode;
+        head = prevNode;
+        
+    }
 
     void display(){
         if(!head){
@@ -139,7 +166,7 @@ int main(){
     }
     list1.display(); //4 -> 3 -> 2 -> 1 -> 0 -> HEAD
 
-    for(int i=0;i<5;i++){
+    for(int i=5;i>0;i--){
         list1.insertAtEnd(i);
     }
     list1.display(); //4 -> 3 -> 2 -> 1 -> 0 -> 0 -> 1 -> 2 -> 3 -> 4 -> HEAD
@@ -164,5 +191,8 @@ int main(){
 
     list1.insertAtBeginning(100);
     list1.display(); //100 -> 3 -> 2 -> 1 -> 0 -> 0 -> 1 -> 2 -> 3 -> HEAD
+
+    list1.reverse();
+    list1.display();
     return 0;
 }
