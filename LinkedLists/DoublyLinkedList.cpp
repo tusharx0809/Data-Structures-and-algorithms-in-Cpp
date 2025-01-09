@@ -17,6 +17,8 @@ class DoublyLinkedList
 public:
     DoublyLinkedList() : head(NULL) {}; // Constructor initializes head pointer to NULL;
 
+
+    //Insertion
     void insertAtBeginning(int value)
     {
         Node *newNode = new Node();
@@ -56,7 +58,7 @@ public:
     }
     void insertAtPosition(int value, int position)
     {
-        Node* newNode = new Node();
+        Node *newNode = new Node();
         newNode->data = value;
         newNode->next = NULL;
         newNode->prev = NULL;
@@ -65,14 +67,16 @@ public:
         {
             cout << "List is empty" << endl;
         }
-        if(head==NULL || position == 1){
+        if (head == NULL || position == 1)
+        {
             newNode->next = head;
             head = newNode;
             return;
         }
         int pos = 1;
-        Node * temp = head;
-        while(position-1 != pos){
+        Node *temp = head;
+        while (position - 1 != pos)
+        {
             pos++;
             temp = temp->next;
         }
@@ -80,6 +84,19 @@ public:
         newNode->prev = temp;
         temp->next = newNode;
     }
+    //Deletion
+    void deleteFromBeginning(){
+        if(!head){
+            cout<<"List is empty!";
+            return;
+        }
+        Node* temp = head;
+        head = head->next;
+
+        delete temp;
+    }
+
+
 
     void display()
     {
@@ -98,6 +115,7 @@ public:
         cout << "NULL" << endl;
     }
 };
+
 
 int main()
 {
@@ -123,9 +141,12 @@ int main()
     list1.display(); // NULL <-> 6 <-> 4 <-> 2 <-> 2 <-> 4 <-> 6 <-> NULL
 
     list1.insertAtPosition(5, 2);
-    list1.display(); //NULL <-> 6 <-> 5 <-> 4 <-> 2 <-> 2 <-> 4 <-> 6 <-> NULL
+    list1.display(); // NULL <-> 6 <-> 5 <-> 4 <-> 2 <-> 2 <-> 4 <-> 6 <-> NULL
 
-    list1.insertAtPosition(7,1); //NULL <-> 7 <-> 6 <-> 5 <-> 4 <-> 2 <-> 2 <-> 4 <-> 6 <-> NULL
+    list1.insertAtPosition(7, 1); // NULL <-> 7 <-> 6 <-> 5 <-> 4 <-> 2 <-> 2 <-> 4 <-> 6 <-> NULL
     list1.display();
+
+    list1.deleteFromBeginning(); 
+    list1.display(); //NULL <-> 6 <-> 5 <-> 4 <-> 2 <-> 2 <-> 4 <-> 6 <-> NULL
     return 0;
 }
