@@ -68,6 +68,7 @@ public:
         if(head==NULL || position == 1){
             newNode->next = head;
             head = newNode;
+            return;
         }
         int pos = 1;
         Node * temp = head;
@@ -123,5 +124,8 @@ int main()
 
     list1.insertAtPosition(5, 2);
     list1.display(); //NULL <-> 6 <-> 5 <-> 4 <-> 2 <-> 2 <-> 4 <-> 6 <-> NULL
+
+    list1.insertAtPosition(7,1); //NULL <-> 7 <-> 6 <-> 5 <-> 4 <-> 2 <-> 2 <-> 4 <-> 6 <-> NULL
+    list1.display();
     return 0;
 }
