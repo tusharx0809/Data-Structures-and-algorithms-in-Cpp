@@ -1,3 +1,5 @@
+//This program contains operation(Insertion, deletion and reverse) on Doubly Linked Lists.
+
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,8 +19,7 @@ class DoublyLinkedList
 public:
     DoublyLinkedList() : head(NULL) {}; // Constructor initializes head pointer to NULL;
 
-
-    //Insertion
+    // Insertion
     void insertAtBeginning(int value)
     {
         Node *newNode = new Node();
@@ -84,31 +85,35 @@ public:
         newNode->prev = temp;
         temp->next = newNode;
     }
-    //Deletion
-    void deleteFromBeginning(){
-        if(!head){
-            cout<<"List is empty!";
+    // Deletion
+    void deleteFromBeginning()
+    {
+        if (!head)
+        {
+            cout << "List is empty!";
             return;
         }
-        Node* temp = head;
+        Node *temp = head;
         head = head->next;
 
         delete temp;
     }
-    void deleteFromEnd(){
-        if(!head){
-            cout<<"List is empty!";
+    void deleteFromEnd()
+    {
+        if (!head)
+        {
+            cout << "List is empty!";
             return;
         }
-        Node* temp = head;
+        Node *temp = head;
 
-        while(temp->next->next){ //Traverse till second last node
+        while (temp->next->next)
+        { // Traverse till second last node
             temp = temp->next;
         }
         delete temp->next;
         temp->next = NULL;
     }
-
 
     void display()
     {
@@ -127,7 +132,6 @@ public:
         cout << "NULL" << endl;
     }
 };
-
 
 int main()
 {
@@ -158,10 +162,10 @@ int main()
     list1.insertAtPosition(7, 1); // NULL <-> 7 <-> 6 <-> 5 <-> 4 <-> 2 <-> 2 <-> 4 <-> 6 <-> NULL
     list1.display();
 
-    list1.deleteFromBeginning(); 
-    list1.display(); //NULL <-> 6 <-> 5 <-> 4 <-> 2 <-> 2 <-> 4 <-> 6 <-> NULL
+    list1.deleteFromBeginning();
+    list1.display(); // NULL <-> 6 <-> 5 <-> 4 <-> 2 <-> 2 <-> 4 <-> 6 <-> NULL
 
     list1.deleteFromEnd();
-    list1.display(); //NULL <-> 6 <-> 5 <-> 4 <-> 2 <-> 2 <-> 4 <-> NULL
+    list1.display(); // NULL <-> 6 <-> 5 <-> 4 <-> 2 <-> 2 <-> 4 <-> NULL
     return 0;
 }
