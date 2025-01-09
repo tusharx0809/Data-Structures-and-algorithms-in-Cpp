@@ -159,6 +159,24 @@ public:
         }
         head=prevNode;
     }
+    void recursiveReverseHelper(Node* cur, Node*& newHead){
+        if(!cur){
+            return;
+        }
+        if(!cur->next){
+            newHead = cur;
+            return;
+        }
+        recursiveReverseHelper(cur->next, newHead);
+        cur->next->next = cur;
+        cur->prev = cur->next;
+        cur->next = NULL;
+    }
+    void recursiveReverse(){
+        Node* newHead = NULL;
+        recursiveReverseHelper(head, newHead);
+        head = newHead;
+    }
     void display()
     {
         if (!head)
@@ -215,7 +233,10 @@ int main()
     list1.deleteFromPosition(3);
     list1.display(); // NULL <-> 6 <-> 5 <-> 2 <-> 2 <-> 4 <-> NULL
 
-    list1.reverse();
-    list1.display();
+    list1.reverse(); 
+    list1.display(); //NULL <-> 4 <-> 2 <-> 2 <-> 5 <-> 6 <-> NULL
+
+    list1.recursiveReverse();
+    list1.display(); //NULL <-> 6 <-> 5 <-> 2 <-> 2 <-> 4 <-> NULL
     return 0;
 }
