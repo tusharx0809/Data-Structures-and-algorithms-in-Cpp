@@ -138,18 +138,18 @@ public:
             return;
         }
 
-        Node *prev = NULL;
+        Node *prevNode = NULL;
         Node *cur = head;
-        Node *next = NULL;
+        Node *nextNode = NULL;
 
         while (cur)
         {
-            next = cur->next;
-            cur->next = prev;
-            prev = cur;
-            cur = next;
+            nextNode = cur->next;
+            cur->next = prevNode;
+            prevNode = cur;
+            cur = nextNode;
         }
-        head = prev;
+        head = prevNode;
     }
 
     void recursiveReverseHelper(Node *cur, Node *&newHead)
