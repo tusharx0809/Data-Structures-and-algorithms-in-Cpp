@@ -71,9 +71,27 @@ class CircularLinkedList{
         newNode->next = temp->next;
         temp->next = newNode;
     }
-    void display(){
+
+    //Deletions
+    void deleteFromBeginning(){
         if(!head){
             cout<<"List is empty!";
+        }
+        Node* delNode= head;
+        Node* temp = head;
+        while(temp->next != head){
+            temp = temp->next;
+        }
+        temp->next = head->next;
+        head = head->next;
+        delete delNode;
+        
+    }
+
+    void display(){
+        if(!head){
+            cout<<"List is empty!"<<endl;
+            return;
         }
         Node* temp = head;
         do {
@@ -86,6 +104,7 @@ class CircularLinkedList{
 
 int main(){
     CircularLinkedList list1;
+    list1.display(); //List is empty!
     for(int i=0;i<5;i++){
         list1.insertAtBeginning(i);
     }
@@ -101,5 +120,8 @@ int main(){
 
     list1.insertAtPosition(50,1);
     list1.display(); //50 -> 4 -> 3 -> 100 -> 2 -> 1 -> 0 -> 0 -> 1 -> 2 -> 3 -> 4 -> HEAD
+
+    list1.deleteFromBeginning();
+    list1.display(); //4 -> 3 -> 100 -> 2 -> 1 -> 0 -> 0 -> 1 -> 2 -> 3 -> 4 -> HEAD
     return 0;
 }
