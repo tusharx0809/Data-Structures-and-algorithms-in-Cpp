@@ -54,6 +54,22 @@ class CircularLinkedList{
             newNode->next = head;
         }
     }
+    void insertAtPosition(int value, int position){
+        Node* newNode = new Node();
+        newNode->data = value;
+        if(position == 1){
+            insertAtBeginning(value);
+            return;
+        }
+        int pos = 1;
+        Node* temp = head;
+        while(position-1 != pos){
+            pos++;
+            temp = temp->next;
+        }
+        newNode->next = temp->next;
+        temp->next = newNode;
+    }
     void display(){
         if(!head){
             cout<<"List is empty!";
@@ -78,5 +94,11 @@ int main(){
         list1.insertAtEnd(i);
     }
     list1.display(); //4 -> 3 -> 2 -> 1 -> 0 -> 0 -> 1 -> 2 -> 3 -> 4 -> HEAD
+
+    list1.insertAtPosition(100,3);
+    list1.display(); //4 -> 3 -> 100 -> 2 -> 1 -> 0 -> 0 -> 1 -> 2 -> 3 -> 4 -> HEAD
+
+    list1.insertAtPosition(50,1);
+    list1.display();
     return 0;
 }
