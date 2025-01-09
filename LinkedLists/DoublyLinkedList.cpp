@@ -1,4 +1,4 @@
-//This program contains operation(Insertion, deletion and reverse) on Doubly Linked Lists.
+// This program contains operation(Insertion, deletion and reverse) on Doubly Linked Lists.
 
 #include <iostream>
 #include <stdio.h>
@@ -114,6 +114,29 @@ public:
         delete temp->next;
         temp->next = NULL;
     }
+    void deleteFromPosition(int position)
+    {
+        if (!head)
+        {
+            cout << "List is empty!";
+        }
+        if (position == 1)
+        {
+            deleteFromBeginning();
+            return;
+        }
+        Node *temp = head;
+        int pos = 1;
+        while (position - 1 != pos)
+        {
+            pos++;
+            temp = temp->next;
+        }
+        Node *delNode = temp->next;
+        temp->next = delNode->next;
+        delNode->next->prev = temp;
+        delete delNode;
+    }
 
     void display()
     {
@@ -167,5 +190,8 @@ int main()
 
     list1.deleteFromEnd();
     list1.display(); // NULL <-> 6 <-> 5 <-> 4 <-> 2 <-> 2 <-> 4 <-> NULL
+
+    list1.deleteFromPosition(3);
+    list1.display(); // NULL <-> 6 <-> 5 <-> 2 <-> 2 <-> 4 <-> NULL
     return 0;
 }

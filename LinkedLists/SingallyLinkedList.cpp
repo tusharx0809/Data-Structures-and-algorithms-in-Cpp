@@ -54,6 +54,7 @@ public:
         if (head == NULL || position == 1)
         {
             insertAtBeginning(value);
+            return;
         }
 
         int pos = 1;
@@ -111,6 +112,7 @@ public:
         }
         if(position == 1){
             deleteFromBegenning();
+            return;
         }
         int pos = 1;
         Node *temp = head;
