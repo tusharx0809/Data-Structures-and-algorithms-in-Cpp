@@ -169,30 +169,30 @@ int main(){
     for(int i=5;i>0;i--){
         list1.insertAtEnd(i);
     }
-    list1.display(); //4 -> 3 -> 2 -> 1 -> 0 -> 0 -> 1 -> 2 -> 3 -> 4 -> HEAD
+    list1.display(); //4 -> 3 -> 2 -> 1 -> 0 -> 5 -> 4 -> 3 -> 2 -> 1 -> HEAD
 
     list1.insertAtPosition(100,3);
-    list1.display(); //4 -> 3 -> 100 -> 2 -> 1 -> 0 -> 0 -> 1 -> 2 -> 3 -> 4 -> HEAD
+    list1.display(); //4 -> 3 -> 100 -> 2 -> 1 -> 0 -> 5 -> 4 -> 3 -> 2 -> 1 -> HEAD
 
     list1.insertAtPosition(50,1);
-    list1.display(); //50 -> 4 -> 3 -> 100 -> 2 -> 1 -> 0 -> 0 -> 1 -> 2 -> 3 -> 4 -> HEAD
+    list1.display(); //50 -> 4 -> 3 -> 100 -> 2 -> 1 -> 0 -> 5 -> 4 -> 3 -> 2 -> 1 -> HEAD
 
     list1.deleteFromBeginning();
-    list1.display(); //4 -> 3 -> 100 -> 2 -> 1 -> 0 -> 0 -> 1 -> 2 -> 3 -> 4 -> HEAD
+    list1.display(); //4 -> 3 -> 100 -> 2 -> 1 -> 0 -> 5 -> 4 -> 3 -> 2 -> 1 -> HEAD
 
     list1.deleteFromEnd();
-    list1.display(); //4 -> 3 -> 100 -> 2 -> 1 -> 0 -> 0 -> 1 -> 2 -> 3 -> HEAD
+    list1.display(); //4 -> 3 -> 100 -> 2 -> 1 -> 0 -> 5 -> 4 -> 3 -> 2 -> HEAD
 
     list1.deleteFromPosition(3);
-    list1.display(); //4 -> 3 -> 2 -> 1 -> 0 -> 0 -> 1 -> 2 -> 3 -> HEAD
+    list1.display(); //4 -> 3 -> 2 -> 1 -> 0 -> 5 -> 4 -> 3 -> 2 -> HEAD
 
     list1.deleteFromPosition(1);
-    list1.display(); //3 -> 2 -> 1 -> 0 -> 0 -> 1 -> 2 -> 3 -> HEAD
+    list1.display(); //3 -> 2 -> 1 -> 0 -> 5 -> 4 -> 3 -> 2 -> HEAD
 
     list1.insertAtBeginning(100);
-    list1.display(); //100 -> 3 -> 2 -> 1 -> 0 -> 0 -> 1 -> 2 -> 3 -> HEAD
+    list1.display(); //100 -> 3 -> 2 -> 1 -> 0 -> 5 -> 4 -> 3 -> 2 -> HEAD
 
     list1.reverse();
-    list1.display();
+    list1.display(); //2 -> 3 -> 4 -> 5 -> 0 -> 1 -> 2 -> 3 -> 100 -> HEAD
     return 0;
 }
