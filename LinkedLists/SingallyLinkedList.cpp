@@ -51,8 +51,9 @@ public:
         newNode->next = NULL;
         if (head == NULL)
         {
+            newNode->next = head;
             head = newNode;
-            newNode->next = NULL;
+            return;
         }
 
         int pos = 1;
