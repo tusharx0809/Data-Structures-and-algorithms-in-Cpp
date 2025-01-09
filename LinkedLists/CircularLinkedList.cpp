@@ -23,6 +23,7 @@ class CircularLinkedList{
     public:
     CircularLinkedList() : head(NULL) {};
 
+    //Insertions
     void insertAtBeginning(int value){
         Node* newNode = new Node();
         newNode->data = value;
@@ -99,6 +100,6 @@ int main(){
     list1.display(); //4 -> 3 -> 100 -> 2 -> 1 -> 0 -> 0 -> 1 -> 2 -> 3 -> 4 -> HEAD
 
     list1.insertAtPosition(50,1);
-    list1.display();
+    list1.display(); //50 -> 4 -> 3 -> 100 -> 2 -> 1 -> 0 -> 0 -> 1 -> 2 -> 3 -> 4 -> HEAD
     return 0;
 }
