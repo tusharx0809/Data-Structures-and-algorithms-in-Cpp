@@ -139,7 +139,25 @@ public:
     }
 
     void reverse(){
+        if(!head){
+            cout<<"List is empty";
+            return;
+        }
+        if(!head->next){
+            return;
+        }
         
+        Node* cur = head;
+        Node* prevNode = NULL;
+
+        while(cur){
+            Node* nextNode = cur->next;
+            cur->next = prevNode;
+            cur->prev = nextNode;
+            prevNode = cur;
+            cur = nextNode;
+        }
+        head=prevNode;
     }
     void display()
     {
@@ -197,7 +215,7 @@ int main()
     list1.deleteFromPosition(3);
     list1.display(); // NULL <-> 6 <-> 5 <-> 2 <-> 2 <-> 4 <-> NULL
 
-    list1.recursiveReverse();
+    list1.reverse();
     list1.display();
     return 0;
 }
