@@ -146,12 +146,12 @@ public:
         if(!head->next){
             return;
         }
-        
+        Node* nextNode = NULL;
         Node* cur = head;
         Node* prevNode = NULL;
 
         while(cur){
-            Node* nextNode = cur->next;
+            nextNode = cur->next;
             cur->next = prevNode;
             cur->prev = nextNode;
             prevNode = cur;
