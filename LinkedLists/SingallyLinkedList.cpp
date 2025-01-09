@@ -53,9 +53,7 @@ public:
         newNode->next = NULL;
         if (head == NULL || position == 1)
         {
-            newNode->next = head;
-            head = newNode;
-            return;
+            insertAtBeginning(value);
         }
 
         int pos = 1;
@@ -112,8 +110,7 @@ public:
             return;
         }
         if(position == 1){
-            head = head->next;
-            return;
+            deleteFromBegenning();
         }
         int pos = 1;
         Node *temp = head;
