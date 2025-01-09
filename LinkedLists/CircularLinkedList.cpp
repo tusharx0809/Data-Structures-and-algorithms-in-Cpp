@@ -85,7 +85,18 @@ class CircularLinkedList{
         temp->next = head->next;
         head = head->next;
         delete delNode;
-        
+    }
+    void deleteFromEnd(){
+        if(!head){
+            cout<<"List is empty!";
+        }
+        Node* temp = head;
+        while(temp->next->next != head){
+            temp = temp->next;
+        }
+        Node* delNode = temp->next;
+        temp->next = head;
+        delete delNode;
     }
 
     void display(){
@@ -123,5 +134,8 @@ int main(){
 
     list1.deleteFromBeginning();
     list1.display(); //4 -> 3 -> 100 -> 2 -> 1 -> 0 -> 0 -> 1 -> 2 -> 3 -> 4 -> HEAD
+
+    list1.deleteFromEnd();
+    list1.display(); //4 -> 3 -> 100 -> 2 -> 1 -> 0 -> 0 -> 1 -> 2 -> 3 -> HEAD
     return 0;
 }
