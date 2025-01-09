@@ -49,7 +49,7 @@ public:
         Node *newNode = new Node();
         newNode->data = value;
         newNode->next = NULL;
-        if (head == NULL)
+        if (head == NULL || position == 1)
         {
             newNode->next = head;
             head = newNode;
