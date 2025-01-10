@@ -63,7 +63,7 @@ int main(){
 
     int top = stack.peek();
     cout<<"Top Element: "<<top<<endl;
-
+    
     return 0;
 
 }
