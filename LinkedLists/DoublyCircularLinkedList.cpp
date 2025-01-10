@@ -210,7 +210,7 @@ int main(){
     list1.display(); //HEAD <-> 3 <-> 2 <-> 1 <-> 0 <-> 5 <-> 4 <-> 3 <-> 2 <-> HEAD
 
     list1.reverse();
-    list1.display(); //100 -> 3 -> 2 -> 1 -> 0 -> 5 -> 4 -> 3 -> 2 -> HEAD
+    list1.display(); //HEAD <-> 2 <-> 3 <-> 4 <-> 5 <-> 0 <-> 1 <-> 2 <-> 3 <-> HEAD
 
     list1.recursiveReverse();
     list1.display(); // HEAD <-> 3 <-> 2 <-> 1 <-> 0 <-> 5 <-> 4 <-> 3 <-> 2 <-> HEAD
