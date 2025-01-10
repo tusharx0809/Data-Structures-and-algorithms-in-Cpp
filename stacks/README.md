@@ -1,0 +1,1 @@
+<h2>This folder contains stack data structure, its operations and applications</h2>
