@@ -17,6 +17,7 @@ class DoublyCircularLinkedList{
     public:
     DoublyCircularLinkedList() : head(NULL) {};
 
+    //Insertion
     void insertAtBeginning(int value){
         Node* newNode = new Node();
         newNode->data = value;
@@ -74,6 +75,8 @@ class DoublyCircularLinkedList{
         newNode->prev = temp;
         temp->next = newNode;
     }
+
+    //Deletion
     void deleteFromBeginning(){
         if(!head){
             cout<<"List is empty!";
@@ -89,6 +92,21 @@ class DoublyCircularLinkedList{
         head = head->next;
         delete delNode;
     }
+    void deleteFromEnd(){
+        if(!head){
+            cout<<"List is empty!";
+            return;
+        }
+        Node*temp = head;
+        while(temp->next->next != head){
+            temp = temp->next;
+        }
+        Node* delNode = temp->next;
+        temp->next = head;
+        head->prev = temp;
+        delete delNode;
+    }
+
     void display(){
         if(!head){
             cout<<"List is empty!"<<endl;
@@ -122,6 +140,9 @@ int main(){
     list1.display(); //HEAD <-> 4 <-> 3 <-> 40 <-> 2 <-> 1 <-> 0 <-> 5 <-> 4 <-> 3 <-> 2 <-> 1 <-> HEAD
 
     list1.deleteFromBeginning();
-    list1.display();
+    list1.display(); //HEAD <-> 3 <-> 40 <-> 2 <-> 1 <-> 0 <-> 5 <-> 4 <-> 3 <-> 2 <-> 1 <-> HEAD
+
+    list1.deleteFromEnd();
+    list1.display(); //HEAD <-> 3 <-> 40 <-> 2 <-> 1 <-> 0 <-> 5 <-> 4 <-> 3 <-> 2 <-> HEAD
     return 0;
 }
