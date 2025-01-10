@@ -54,7 +54,26 @@ class DoublyCircularLinkedList{
         head->prev = newNode;
         
     }
-
+    void insertAtPosition(int value, int position){
+        Node* newNode = new Node();
+        newNode->data = value;
+        if(!head){
+            return;
+        }
+        if(position == 1){
+            insertAtBeginning(value);
+            return;
+        }
+        int pos = 1;
+        Node* temp = head;
+        while(position-1 != pos){
+            pos++;
+            temp = temp->next;
+        }
+        newNode->next = temp->next;
+        newNode->prev = temp;
+        temp->next = newNode;
+    }
     void display(){
         if(!head){
             cout<<"List is empty!"<<endl;
@@ -72,16 +91,19 @@ class DoublyCircularLinkedList{
 
 int main(){
     DoublyCircularLinkedList list1;
-    list1.display();
+    list1.display(); //List is empty!
 
     for(int i=0;i<5;i++){
         list1.insertAtBeginning(i);
     }
-    list1.display();
+    list1.display(); //HEAD <-> 4 <-> 3 <-> 2 <-> 1 <-> 0 <-> HEAD
 
     for(int i=5;i>0;i--){
         list1.insertAtEnd(i);
     }
-    list1.display();
+    list1.display(); //HEAD <-> 4 <-> 3 <-> 2 <-> 1 <-> 0 <-> 5 <-> 4 <-> 3 <-> 2 <-> 1 <-> HEAD
+
+    list1.insertAtPosition(40,3);
+    list1.display(); //HEAD <-> 4 <-> 3 <-> 40 <-> 2 <-> 1 <-> 0 <-> 5 <-> 4 <-> 3 <-> 2 <-> 1 <-> HEAD
     return 0;
 }
