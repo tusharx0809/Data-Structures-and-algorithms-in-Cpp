@@ -81,6 +81,9 @@ int main(){
 
     stack.pop();//30 popped from stack
     stack.display();//Stack: 20 10
+    
+    int top = stack.peek();
+    cout<<"Top Element: "<<top<<endl; //Top Element: 20
 
     stack.pop();//20 popped from stack
     stack.display();//Stack: 10
