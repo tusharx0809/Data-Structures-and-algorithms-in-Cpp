@@ -138,6 +138,8 @@ class DoublyCircularLinkedList{
         Node* cur = head;
         Node* prevNode = NULL;
 
+        Node* originalNext = head->next;
+
         do{
             nextNode = cur->next;
             cur->next = prevNode;
@@ -147,7 +149,7 @@ class DoublyCircularLinkedList{
         }while(cur != head);
 
         head->next = prevNode;
-        head->prev = nextNode;
+        head->prev = originalNext;
         head = prevNode;
     }
     void recursiveReverseHelper(Node* cur, Node*& newHead){
