@@ -150,6 +150,24 @@ class DoublyCircularLinkedList{
         head->prev = nextNode;
         head = prevNode;
     }
+    void recursiveReverseHelper(Node* cur, Node*& newHead){
+        if(!cur){
+            return;
+        }
+        if(cur->next == head){
+            newHead = cur;
+            return;
+        }
+        recursiveReverseHelper(cur->next, newHead);
+        cur->next->next = cur;
+        cur->prev = cur->next;
+        cur->next = newHead;
+    }
+    void recursiveReverse(){
+        Node* newHead = NULL;
+        recursiveReverseHelper(head, newHead);
+        head = newHead;
+    }
     void display(){
         if(!head){
             cout<<"List is empty!"<<endl;
@@ -192,6 +210,9 @@ int main(){
     list1.display(); //HEAD <-> 3 <-> 2 <-> 1 <-> 0 <-> 5 <-> 4 <-> 3 <-> 2 <-> HEAD
 
     list1.reverse();
-    list1.display();
+    list1.display(); //100 -> 3 -> 2 -> 1 -> 0 -> 5 -> 4 -> 3 -> 2 -> HEAD
+
+    list1.recursiveReverse();
+    list1.display(); // HEAD <-> 3 <-> 2 <-> 1 <-> 0 <-> 5 <-> 4 <-> 3 <-> 2 <-> HEAD
     return 0;
 }
