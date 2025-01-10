@@ -127,11 +127,7 @@ class CircularLinkedList{
         Node* prevNode = NULL;
         Node* cur = head;
         Node* nextNode = NULL;
-        Node* last = head;
-
-        while(last->next != head){
-            last = last->next;
-        }
+    
         do{
             nextNode = cur->next;
             cur->next = prevNode;

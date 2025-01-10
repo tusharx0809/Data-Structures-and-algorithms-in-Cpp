@@ -127,6 +127,19 @@ class DoublyCircularLinkedList{
         delete delNode;
     }
 
+    void reverse(){
+        if(!head){
+            cout<<"List is empty!";
+        }
+        if(!head->next){
+            return;
+        }
+        Node* nextNode = NULL;
+        Node* cur = head;
+        Node* prevNode = NULL;
+
+        while()
+    }
     void display(){
         if(!head){
             cout<<"List is empty!"<<endl;
