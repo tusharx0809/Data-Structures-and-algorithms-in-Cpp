@@ -138,7 +138,17 @@ class DoublyCircularLinkedList{
         Node* cur = head;
         Node* prevNode = NULL;
 
-        while()
+        do{
+            nextNode = cur->next;
+            cur->next = prevNode;
+            cur->prev = nextNode;
+            prevNode = cur;
+            cur = nextNode;
+        }while(cur != head);
+
+        head->next = prevNode;
+        head->prev = nextNode;
+        head = prevNode;
     }
     void display(){
         if(!head){
@@ -180,5 +190,8 @@ int main(){
 
     list1.deleteFromPosition(2);
     list1.display(); //HEAD <-> 3 <-> 2 <-> 1 <-> 0 <-> 5 <-> 4 <-> 3 <-> 2 <-> HEAD
+
+    list1.reverse();
+    list1.display();
     return 0;
 }
