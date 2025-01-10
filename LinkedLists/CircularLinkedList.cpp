@@ -141,9 +141,24 @@ class CircularLinkedList{
 
         head->next = prevNode;
         head = prevNode;
-        
     }
-
+    void recursiveReverseHelper(Node* cur, Node*& newHead){
+        if(!cur){
+            return;
+        }
+        if(cur->next == head){
+            newHead = cur;
+            return;
+        }
+        recursiveReverseHelper(cur->next, newHead);
+        cur->next->next = cur;
+        cur->next = newHead;
+    }
+    void recursiveReverse(){
+        Node* newHead = NULL;
+        recursiveReverseHelper(head, newHead);
+        head = newHead;
+    }
     void display(){
         if(!head){
             cout<<"List is empty!"<<endl;
@@ -194,5 +209,8 @@ int main(){
 
     list1.reverse();
     list1.display(); //2 -> 3 -> 4 -> 5 -> 0 -> 1 -> 2 -> 3 -> 100 -> HEAD
+
+    list1.recursiveReverse();
+    list1.display(); //100 -> 3 -> 2 -> 1 -> 0 -> 5 -> 4 -> 3 -> 2 -> HEAD
     return 0;
 }
