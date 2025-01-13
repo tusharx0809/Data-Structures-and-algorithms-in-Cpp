@@ -3,7 +3,7 @@
 // Infix:  a+b*(c^d-e)^(f+g*h)-i
 // Postfix: abcd^e-fgh*+^*+i-
 
-#include <bits./stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 int precedence(char c)
@@ -35,9 +35,21 @@ void infixToPostfix(string s)
     {
         char c = s[i];
 
-        if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9'))
+        // Handle multi-digit numbers
+        if (isdigit(c))
+        {
+            while (i < s.length() && isdigit(s[i]))
+            {
+                result += s[i];
+                i++;
+            }
+            result += ' '; // Separate numbers with a space
+            i--; // Adjust index
+        }
+        else if (isalpha(c)) // Handle variables like a, b, c
         {
             result += c;
+            result += ' ';
         }
         else if (c == '(')
         {
@@ -48,15 +60,17 @@ void infixToPostfix(string s)
             while (st.top() != '(')
             {
                 result += st.top();
+                result += ' ';
                 st.pop();
             }
             st.pop();
         }
-        else
+        else // Operators
         {
             while (!st.empty() && precedence(c) <= precedence(st.top()))
             {
                 result += st.top();
+                result += ' ';
                 st.pop();
             }
             st.push(c);
@@ -66,15 +80,20 @@ void infixToPostfix(string s)
     while (!st.empty())
     {
         result += st.top();
+        result += ' ';
         st.pop();
     }
+
     cout << result << endl;
 }
 
 int main()
 {
-    string exp = "a+b*(c^d-e)^(f+g*h)-i";
-    infixToPostfix(exp); //abcd^e-fgh*+^*+i-
-    infixToPostfix("10+2*(3^4-2)^(10+2*3)-5");
+    string exp = "10+20*(30^4-50)^(6+70*8)-90";
+    infixToPostfix(exp);
+    // Output: 10 20 30 4 ^ 50 - 6 70 8 * + ^ * + 90 -
+
+    infixToPostfix("a+b*(c^d-e)^(f+g*h)-i");
+
     return 0;
 }
