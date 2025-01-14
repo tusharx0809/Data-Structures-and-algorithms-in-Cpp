@@ -30,6 +30,9 @@ string prefixToInfix(string exp) {
 
         // If the current character is an operator
         if (isOperator(exp[i])) {
+            
+            if (s.size() < 2) return "Invalid Expression";
+
             string op1 = s.top();
             s.pop();
             string op2 = s.top();
@@ -60,9 +63,19 @@ string prefixToInfix(string exp) {
 }
 
 int main() {
-    string s = "* - A / B C - / A K L";
-    cout << "Infix: " << prefixToInfix(s) << endl; //((A-(B/C))*((A/K)-L))
-    string s2 = "- + 10 * 20 ^ - ^ 30 4 50 + 6 * 70 8 90"; 
-    cout <<"Infix: "<<prefixToInfix(s2) <<endl; //((10+(20*(((30^4)-50)^(6+(70*8)))))-90)
+    vector<string> tests = {
+    "*+ABC",               // (A+(B*C))
+    "+*12+34",           //  ((1*2)+(3+4))
+    "/+AB-CD",           // ((A+B)/(C-D))
+    "*+100+23",          // ((100+2)+3)
+    "^A+BC",              // (A^(B+C))
+    "- + 10 * 20 ^ - ^ 30 4 50 + 6 * 70 8 90" // ((10+(20*(((30^4)-50)^(6+(70*8)))))-90)
+};
+for (const string& exp : tests) {
+        cout << "Prefix: " << exp << endl;
+        cout << "Infix: " << prefixToInfix(exp) << endl << endl;
+    }
+    
     return 0;
+
 }
