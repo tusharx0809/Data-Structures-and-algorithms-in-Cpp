@@ -19,6 +19,8 @@ string postfixToPrefix(string postfix) {
         // If the character is an operator
         if (isOperator(postfix[i])) {
             // Pop two operands from the stack
+            if(s.size() < 2) return "Invalid Expression";
+            
             string operand2 = s.top(); s.pop();
             string operand1 = s.top(); s.pop();
 
