@@ -6,11 +6,6 @@ bool isOperator(char x) {
     return (x == '+' || x == '-' || x == '*' || x == '/' || x == '^');
 }
 
-// Check if character is a digit
-bool isDigit(char x) {
-    return (x >= '0' && x <= '9');
-}
-
 // Get Infix for a given postfix expression
 string getInfix(string exp) {
     stack<string> s;
@@ -18,9 +13,9 @@ string getInfix(string exp) {
     
     for (int i = 0; i < exp.length(); i++) {
         // Handle multi-digit numbers
-        if (isDigit(exp[i])) {
+        if (isdigit(exp[i])) {
             // Keep adding digits to number string
-            while (i < exp.length() && isDigit(exp[i])) {
+            while (i < exp.length() && isdigit(exp[i])) {
                 number += exp[i];
                 i++;
             }
