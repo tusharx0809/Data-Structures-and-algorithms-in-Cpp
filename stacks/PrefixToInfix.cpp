@@ -61,8 +61,8 @@ string prefixToInfix(string exp) {
 
 int main() {
     string s = "* - A / B C - / A K L";
-    cout << "Infix: " << prefixToInfix(s) << endl;
-    string s2 = "- + 10 * 20 ^ - ^ 30 4 50 + 6 * 70 8 90";
-    cout <<"Infix: "<<prefixToInfix(s2) <<endl;
+    cout << "Infix: " << prefixToInfix(s) << endl; //((A-(B/C))*((A/K)-L))
+    string s2 = "- + 10 * 20 ^ - ^ 30 4 50 + 6 * 70 8 90"; 
+    cout <<"Infix: "<<prefixToInfix(s2) <<endl; //((10+(20*(((30^4)-50)^(6+(70*8)))))-90)
     return 0;
 }
