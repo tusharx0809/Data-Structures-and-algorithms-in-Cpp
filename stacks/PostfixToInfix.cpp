@@ -7,7 +7,7 @@ bool isOperator(char x) {
 }
 
 // Get Infix for a given postfix expression
-string getInfix(string exp) {
+string postfixToInfix(string exp) {
     stack<string> s;
     string number = "";
     
@@ -62,7 +62,7 @@ int main() {
     
     for (const string& exp : tests) {
         cout << "Postfix: " << exp << endl;
-        cout << "Infix: " << getInfix(exp) << endl << endl;
+        cout << "Infix: " << postfixToInfix(exp) << endl << endl;
     }
     
     return 0;
