@@ -23,7 +23,7 @@ string prefixToPostfix(string exp) {
     int length = exp.size();
 
     // Start from the end of the string and process from right to left
-    for (int i = length - 1; i >= 0; ) {
+    for (int i = length - 1; i >= 0; i--) {
         // Skip spaces (if present in the input)
         if (exp[i] == ' ') {
             i--;
