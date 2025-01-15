@@ -5,16 +5,7 @@ using namespace std;
 
 // Check if the character is an operator
 bool isOperator(char x) {
-    switch (x) {
-        case '+':
-        case '-':
-        case '/':
-        case '*':
-        case '^':
-        case '%':
-            return true;
-    }
-    return false;
+    return (x == '^' || x == '/' || x == '*' || x == '+' || x == '-');
 }
 
 // Function to convert prefix to infix
