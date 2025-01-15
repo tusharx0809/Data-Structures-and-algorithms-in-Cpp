@@ -38,7 +38,7 @@ void infixToPostfix(string s)
         // Handle multi-digit numbers
         if (isdigit(c))
         {
-            while (i <  s.length() && isdigit(s[i]))
+            while (i <  s.length() && (isdigit(s[i]) || s[i] == '.'))
             {
                 result += s[i];
                 i++;
@@ -95,6 +95,9 @@ int main()
 
     infixToPostfix("a+b*(c^d-e)^(f+g*h)-i");
     //Output: a b c d ^ e - f g h * + ^ * + i -
+
+    infixToPostfix("10+20.4*(30^4-50)^(6+70.32*8)-90");
+    //10 20.4 30 4 ^ 50 - 6 70.32 8 * + ^ * 90 - +
 
     return 0;
 }
