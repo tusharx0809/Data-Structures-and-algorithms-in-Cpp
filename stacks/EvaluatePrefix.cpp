@@ -56,5 +56,9 @@ int main() {
     string exp = "+ 3.5 * ^ 4 2 - 16 2";  // Example: 3.5 + (4^2 * (16-2)) = 227.5
     float result = evaluatePrefix(exp);
     cout<<result<<endl;
+
+    string exp2 = "+ 9 * 2 6";
+    float result2 = evaluatePrefix(exp2);
+    cout<<result2<<endl;
     return 0;
 }
