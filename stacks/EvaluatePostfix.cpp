@@ -48,7 +48,7 @@ float evaluatePostfix(string exp){
 }
 
 int main(){
-    string exp = "3.5 4 2 ^ 6 2 - * +";
+    string exp = "3.5 4 2 ^ 16 2 - * +";
     float result = evaluatePostfix(exp);
     cout<<result<<endl;
 

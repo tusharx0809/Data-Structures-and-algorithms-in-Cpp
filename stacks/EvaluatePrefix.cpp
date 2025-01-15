@@ -6,7 +6,18 @@ bool isOperator(char x) {
 }
 
 float evaluatePrefix(string exp) {
-    
+    stack<float> s;
+    string num;
+
+    for(int i=exp.length()-1; i>=0; i--){
+        char c = exp[i];
+        if(c == ' '){
+            continue;
+        }
+        if(isdigit(c) || c == '.'){
+            num = c + num;
+        }
+    }
 }
 
 int main() {
