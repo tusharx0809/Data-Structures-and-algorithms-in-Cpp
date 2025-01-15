@@ -13,7 +13,7 @@ string reverseFloatingNumber(string exp){
     return result;
 }
 float evaluatePrefix(string exp){
-    string<float> st;
+    stack<float> st;
     string num;
 
     for(int i=exp.length(); i>=0; i--){
@@ -22,10 +22,37 @@ float evaluatePrefix(string exp){
         if(c == ' '){
             continue;
         }
-        if(isdigit(c) ){
-                         
+        if(isdigit(c)){
+           num += c;
+           if(i-1 == 0 || (!isdigit(exp[i-1]) && exp[i-1] != '.')){
+                st.push(stof(reverseFloatingNumber(num)));
+                num = "";
+           }              
+        }else if(isOperator(c)){
+            float num1 = st.top();
+            st.pop();
+            float num2 = st.top();
+            st.pop();
+            switch(exp[i]){
+                case('^'):
+                    st.push(pow(num2, num1));
+                    break;
+                case('/'):
+                    st.push(num2 / num1);
+                    break;
+                case('*'):
+                    st.push(num2 * num1);
+                    break;
+                case('+'):
+                    st.push(num2 + num1);
+                    break;
+                case('-'):
+                    st.push(num2 - num1);
+                    break;
+            } 
         }
     }
+    return st.top();
 }
 int main(){
 
