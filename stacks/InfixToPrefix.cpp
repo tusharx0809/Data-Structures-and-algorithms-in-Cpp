@@ -117,6 +117,6 @@ int main(){
     infixToPrefix("x+y*z/w+u"); //+ + x / * y z w u
     infixToPrefix("a+b*(c^d-e)^(f+g*h)-i"); //- + a * b ^ - ^ c d e + f * g h i
     infixToPrefix("10.23+20*(30^4-50)^(6+70*8)-90"); //- + 10 * 20 ^ - ^ 30 4 50 + 6 * 70 8 90
-    infixToPrefix("3.5 + 4 ^ 2 * (6 - 2)");
+    infixToPrefix("3.5 + 4 ^ 2 * (6 - 2)"); // + 3.5 * ^ 4 2 - 6 2
     return 0;
 }
