@@ -1,9 +1,8 @@
+//CPP program to evaluate prefix expression including digits greater than 9 and floating point numbers
+
 #include<bits/stdc++.h>
 using namespace std;
 
-bool isOperator(char x) {
-    return (x == '^' || x == '/' || x == '*' || x == '+' || x == '-');
-}
 
 float evaluatePrefix(string exp) {
     stack<float> st;
