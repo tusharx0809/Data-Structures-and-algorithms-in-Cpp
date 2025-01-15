@@ -16,8 +16,7 @@ string prefixToPostfix(string exp) {
     // Start from the end of the string and process from right to left
     for (int i = length - 1; i >= 0; i--) {
         // Skip spaces (if present in the input)
-        if (exp[i] == ' ') {
-            i--;
+        if (exp[i] == ' ') { 
             continue;
         }
 
@@ -32,7 +31,6 @@ string prefixToPostfix(string exp) {
             string temp = op1 + " " + op2 + " " + exp[i];
             s.push(temp);
 
-            i--; // Move to the next character
         } else {
             // For multi-character operands, extract the entire operand
             string operand = "";
