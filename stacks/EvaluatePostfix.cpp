@@ -57,5 +57,9 @@ int main(){
     string exp2 ="5 3 2 * + 9 6 / -";
     float result2 = evaluatePostfix(exp2);
     cout<<result2<<endl;
+
+    string exp3 = "15 7 1 1 + - / 3 * 2 1 1 + + -";
+    float result3 = evaluatePostfix(exp3);
+    cout<<result3<<endl;
     return 0;
 }

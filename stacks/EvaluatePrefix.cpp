@@ -11,15 +11,27 @@ string reverseFloatingNumber(string exp){
         result += exp[i];
     }
     return result;
+}
+float evaluatePrefix(string exp){
+    string<float> st;
+    string num;
 
+    for(int i=exp.length(); i>=0; i--){
+        char c = exp[i];
+        
+        if(c == ' '){
+            continue;
+        }
+        if(isdigit(c) ){
+                         
+        }
+    }
 }
 int main(){
-    // string exp = "+ 3.5 * ^ 4 2 - 6 2";
-    // float result = evaluatePrefix(exp);
-    // cout<<result;
 
-    string exp = "5.3";
-    string res = floatingNumber(exp);
-    cout<<res;
+    string exp = "+ 3.5 * ^ 4 2 - 6 2";
+    float result = evaluatePrefix(exp);
+    cout<<result;
+
     return 0;
 }
