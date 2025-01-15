@@ -46,7 +46,7 @@ int main() {
     string postfix = "A B C / - A K / L - *";
 
     string prefix = postfixToPrefix(postfix);
-    cout << "The prefix expression is: " << prefix << endl;
+    cout << "The prefix expression is: " << prefix << endl; //* - A / B C - / A K L
 
     return 0;
 }
