@@ -5,7 +5,7 @@ using namespace std;
 bool isOperator(char x){
     return (x == '^' || x == '/' || x == '*' || x == '+' || x == '-');
 }
-string floatingNumber(string exp){
+string reverseFloatingNumber(string exp){
     string result="";
     for(int i = exp.length()-1; i >=0; i--){
         result += exp[i];
