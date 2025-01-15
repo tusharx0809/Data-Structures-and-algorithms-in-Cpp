@@ -34,7 +34,9 @@ void infixToPostfix(string s)
     for (int i = 0; i < s.length(); i++)
     {
         char c = s[i];
-
+        if(c == ' '){
+            continue;
+        }
         // Handle multi-digit numbers
         if (isdigit(c))
         {
@@ -99,5 +101,6 @@ int main()
     infixToPostfix("10+20.4*(30^4-50)^(6+70.32*8)-90");
     //10 20.4 30 4 ^ 50 - 6 70.32 8 * + ^ * 90 - +
 
+    infixToPostfix("3.5 + 4 ^ 2 * (6 - 2)");
     return 0;
 }
