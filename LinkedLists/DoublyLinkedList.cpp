@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <stdio.h>
-#include <stdlib.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct Node
@@ -178,6 +178,31 @@ public:
         recursiveReverseHelper(head, newHead);
         head = newHead;
     }
+
+    void stackReverse(){
+        stack<Node*> st;
+
+        if(!head){
+            cout<<"Empty List!"<<endl;
+            return;
+        }
+
+        Node* temp = head;
+        while(temp->next != NULL){
+            st.push(temp);
+            temp = temp->next;
+        }
+
+        head = temp;
+        while(!st.empty()){
+            temp->next = st.top();
+            temp->next->prev = temp;
+            st.pop();
+            temp = temp->next;
+        }
+        temp->next = NULL;
+        head->prev = NULL;
+    }
     void display()
     {
         if (!head)
@@ -239,5 +264,8 @@ int main()
 
     list1.recursiveReverse();
     list1.display(); //NULL <-> 6 <-> 5 <-> 2 <-> 2 <-> 4 <-> NULL
+
+    list1.stackReverse();
+    list1.display(); //NULL <-> 4 <-> 2 <-> 2 <-> 5 <-> 6 <-> NULL
     return 0;
 }
