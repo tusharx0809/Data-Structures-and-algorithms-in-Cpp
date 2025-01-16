@@ -9,7 +9,7 @@
 
 #include<iostream>
 #include<stdio.h>
-#include<stdlib.h>
+#include<bits/stdc++.h>
 using namespace std;
 
 struct Node{
@@ -155,6 +155,29 @@ class CircularLinkedList{
         recursiveReverseHelper(head, newHead);
         head = newHead;
     }
+
+    void stackReverse(){
+        stack<Node*> st;
+        if(!head){
+            cout<<"List Empty!"<<endl;
+            return;
+        }
+        Node* temp = head;
+        do{
+            st.push(temp);
+            temp= temp->next;
+        }while(temp->next != head);
+
+        head = temp;
+        while(!st.empty()){
+            temp->next = st.top();
+            st.pop();
+            temp = temp->next;
+        }
+        temp->next = head;
+        
+
+    }
     void display(){
         if(!head){
             cout<<"List is empty!"<<endl;
@@ -208,5 +231,8 @@ int main(){
 
     list1.recursiveReverse();
     list1.display(); //100 -> 3 -> 2 -> 1 -> 0 -> 5 -> 4 -> 3 -> 2 -> HEAD
+
+    list1.stackReverse();
+    list1.display();
     return 0;
 }
