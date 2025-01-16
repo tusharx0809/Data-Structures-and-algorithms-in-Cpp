@@ -48,19 +48,19 @@ class LinkedList{
                 swapped = false;
 
                 while(traverseNode->next){
-                    Node *ptr = traverseNode->next;
-                    if(traverseNode->data > ptr->data){
+                    Node *nextNode = traverseNode->next;
+                    if(traverseNode->data > nextNode->data){
                         swapped = true;
                         if(traverseNode == head){
-                            traverseNode->next = ptr->next;
-                            ptr->next = traverseNode;
-                            prevNode = ptr;
+                            traverseNode->next = nextNode->next;
+                            nextNode->next = traverseNode;
+                            prevNode = nextNode;
                             head = prevNode;
                         }else{
-                            traverseNode->next = ptr->next;
-                            ptr->next = traverseNode;
-                            prevNode->next = ptr;
-                            prevNode = ptr;
+                            traverseNode->next = nextNode->next;
+                            nextNode->next = traverseNode;
+                            prevNode->next = nextNode;
+                            prevNode = nextNode;
                         }
                         continue;
                     }
