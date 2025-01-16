@@ -52,7 +52,7 @@ public:
         int itr = 0;
         bool swapped;
 
-        while(itr < len){
+        while(itr < len - 1){
             Node *trav = head;
             Node *prevN = head;
             swapped = false;
@@ -62,12 +62,12 @@ public:
                     swapped = true;
                     if(trav == head){
                         trav->next = ptr->next;
-                        ptr->next = trav->next;
+                        ptr->next = trav;
                         prevN = ptr;
                         head = prevN;
                     }else{
                         trav->next = ptr->next;
-                        ptr->next = trav->next;
+                        ptr->next = trav;
                         prevN->next = ptr;
                         prevN = ptr;
                     }
@@ -75,7 +75,7 @@ public:
                 }
                 prevN = trav;
                 trav = trav->next;
-            }while(trav != head);
+            }while(trav->next != head);
             if(!swapped){
                 break;
             }
