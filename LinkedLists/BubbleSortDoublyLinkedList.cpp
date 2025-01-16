@@ -26,9 +26,57 @@ class DoublyLinkedList{
         }
 
         newNode->next = head;
+        head->prev = newNode;
         head = newNode;
     }
+    int getlen(){
+        int len=0;
+        Node *temp = head;
+        while(temp){
+            len++;
+            temp=temp->next;
+        }
+        return len;
+    }
+    void bubbleSort(){
+        int len = getlen();
+        int itr = 0;
+        bool swapped;
 
+        while(itr < len){
+            Node *trav = head;
+            Node *prevN = head;
+            swapped = false;
+            while(trav->next){
+                Node *ptr = trav->next;
+                if(trav->data > ptr->data){
+                    swapped = true;
+                    if(trav == head){
+                        trav->next = ptr->next;
+                        ptr->next = trav;
+                        ptr->prev = trav->prev;
+                        trav->prev = ptr;
+                        prevN = ptr;
+                        head = prevN;
+                    }else{
+                        trav->next = ptr->next;
+                        ptr->next = trav;
+                        ptr->prev = trav->prev;
+                        trav->prev = ptr;
+                        prevN->next = ptr;
+                        prevN = ptr;
+                    }
+                    continue;
+                }
+                prevN = trav;
+                trav = trav->next;
+            }
+            if(!swapped){
+                break;
+            }
+            itr++;
+        }
+    }
     void display(){
         if(!head){
             cout<<"Empty List!"<<endl;
@@ -40,7 +88,7 @@ class DoublyLinkedList{
             cout<<temp->data<<" <-> ";
             temp = temp->next;
         }
-        cout<<"NULL";
+        cout<<"NULL"<<endl;
     }
 };
 
@@ -51,6 +99,9 @@ int main(){
     for(int i=0;i<=5;i++){
         list.insertAtBeginning(i);
     }
+    list.display(); //NULL <-> 5 <-> 4 <-> 3 <-> 2 <-> 1 <-> 0 <-> NULL
+
+    list.bubbleSort();
     list.display();
     return 0;
 }
