@@ -1,4 +1,4 @@
-//This program contains operations(Insertion, deletion and reverse) on Singally Linked List.
+// This program contains operations(Insertion, deletion and reverse) on Singally Linked List.
 
 #include <iostream>
 #include <stdio.h>
@@ -110,7 +110,8 @@ public:
             cout << "List is empty!" << endl;
             return;
         }
-        if(position == 1){
+        if (position == 1)
+        {
             deleteFromBegenning();
             return;
         }
@@ -175,31 +176,35 @@ public:
         head = newHead;
     }
 
-    void stackReverse(){
-        stack<Node*> st;
+    void stackReverse()
+    {
+        stack<Node *> st;
 
-        if(!head){
-            cout<<"Empty List!";
+        if (!head)
+        {
+            cout << "Empty List!";
             return;
         }
 
-        Node* temp = head;
-        while(temp->next != NULL){
+        Node *temp = head;
+        while (temp->next != NULL)
+        {
             st.push(temp);
             temp = temp->next;
         }
 
         head = temp;
 
-        while(!st.empty()){
+        while (!st.empty())
+        {
             temp->next = st.top();
             st.pop();
             temp = temp->next;
         }
         temp->next = NULL;
-
     }
 
+    
     void display()
     {
         if (!head)
@@ -249,10 +254,11 @@ int main()
     list1.reverse();
     list1.display(); // 4 -> 2 -> 0 -> 0 -> 4 -> 5 -> NULL Reverse
 
-    list1.recursiveReverse(); 
-    list1.display();// 5 -> 4 -> 0 -> 0 -> 2 -> 4 -> NULL Recursive Reverse
+    list1.recursiveReverse();
+    list1.display(); // 5 -> 4 -> 0 -> 0 -> 2 -> 4 -> NULL Recursive Reverse
 
     list1.stackReverse();
-    list1.display(); //4 -> 2 -> 0 -> 0 -> 4 -> 5 -> NULL
+    list1.display(); // 4 -> 2 -> 0 -> 0 -> 4 -> 5 -> NULL
+
     return 0;
 }
