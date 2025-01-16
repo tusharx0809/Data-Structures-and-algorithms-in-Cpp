@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <stdio.h>
-#include <stdlib.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct Node
@@ -175,6 +175,31 @@ public:
         head = newHead;
     }
 
+    void stackReverse(){
+        stack<Node*> st;
+
+        if(!head){
+            cout<<"Empty List!";
+            return;
+        }
+
+        Node* temp = head;
+        while(temp->next != NULL){
+            st.push(temp);
+            temp = temp->next;
+        }
+
+        head = temp;
+
+        while(!st.empty()){
+            temp->next = st.top();
+            st.pop();
+            temp = temp->next;
+        }
+        temp->next = NULL;
+
+    }
+
     void display()
     {
         if (!head)
@@ -224,7 +249,10 @@ int main()
     list1.reverse();
     list1.display(); // 4 -> 2 -> 0 -> 0 -> 4 -> 5 -> NULL Reverse
 
-    list1.recursiveReverse(); // 5 -> 4 -> 0 -> 0 -> 2 -> 4 -> NULL Recursive Reverse
-    list1.display();
+    list1.recursiveReverse(); 
+    list1.display();// 5 -> 4 -> 0 -> 0 -> 2 -> 4 -> NULL Recursive Reverse
+
+    list1.stackReverse();
+    list1.display(); //4 -> 2 -> 0 -> 0 -> 4 -> 5 -> NULL
     return 0;
 }
