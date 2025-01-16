@@ -47,41 +47,50 @@ public:
         } while (temp != head);
         return len;
     }
-    void bubbleSort(){
+    void bubbleSort()
+    {
+        if (!head || head->next == head) return;  // Empty list or single node
+        
         int len = getlen();
-        int itr = 0;
-        bool swapped;
-
-        while(itr < len - 1){
-            Node *trav = head;
-            Node *prevN = head;
-            swapped = false;
-            do{
-                Node *ptr = trav->next;
-                if(trav->data > ptr->data){
-                    swapped = true;
-                    if(trav == head){
-                        trav->next = ptr->next;
-                        ptr->next = trav;
-                        prevN = ptr;
-                        head = prevN;
-                    }else{
-                        trav->next = ptr->next;
-                        ptr->next = trav;
-                        prevN->next = ptr;
-                        prevN = ptr;
+        for (int i = 0; i < len - 1; i++)
+        {
+            Node *current = head;
+            Node *prev = NULL;
+            Node *tail = head;
+            while (tail->next != head) tail = tail->next;  // Find tail
+            
+            for (int j = 0; j < len - i - 1; j++)
+            {
+                Node *nextNode = current->next;
+                
+                if (current->data > nextNode->data)
+                {
+                    // Swap nodes
+                    if (current == head)
+                    {
+                        current->next = nextNode->next;
+                        nextNode->next = current;
+                        head = nextNode;
+                        tail->next = head;
+                        prev = nextNode;
                     }
-                    continue;
+                    else
+                    {
+                        current->next = nextNode->next;
+                        nextNode->next = current;
+                        prev->next = nextNode;
+                        prev = nextNode;
+                    }
                 }
-                prevN = trav;
-                trav = trav->next;
-            }while(trav->next != head);
-            if(!swapped){
-                break;
+                else
+                {
+                    prev = current;
+                    current = current->next;
+                }
             }
-            itr++;
         }
     }
+
     void display()
     {
         if (!head)
@@ -96,7 +105,7 @@ public:
             cout << temp->data << " -> ";
             temp = temp->next;
         } while (temp != head);
-        cout << "HEAD"<<endl;
+        cout << "HEAD" << endl;
     }
 };
 
@@ -109,9 +118,9 @@ int main()
     {
         list.insertAtBeginning(i);
     }
-    list.display();
-
+    list.display(); // HEAD -> 5 -> 4 -> 3 -> 2 -> 1 -> 0 -> HEAD
     list.bubbleSort();
     list.display();
+
     return 0;
 }
