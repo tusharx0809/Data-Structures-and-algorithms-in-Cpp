@@ -48,23 +48,23 @@ class DoublyLinkedList{
             Node *prevN = head;
             swapped = false;
             while(trav->next){
-                Node *ptr = trav->next;
-                if(trav->data > ptr->data){
+                Node *nextNode = trav->next;
+                if(trav->data > nextNode->data){
                     swapped = true;
                     if(trav == head){
-                        trav->next = ptr->next;
-                        ptr->next = trav;
-                        ptr->prev = trav->prev;
-                        trav->prev = ptr;
-                        prevN = ptr;
+                        trav->next = nextNode->next;
+                        nextNode->next = trav;
+                        nextNode->prev = trav->prev;
+                        trav->prev = nextNode;
+                        prevN = nextNode;
                         head = prevN;
                     }else{
-                        trav->next = ptr->next;
-                        ptr->next = trav;
-                        ptr->prev = trav->prev;
-                        trav->prev = ptr;
-                        prevN->next = ptr;
-                        prevN = ptr;
+                        trav->next = nextNode->next;
+                        nextNode->next = trav;
+                        nextNode->prev = trav->prev;
+                        trav->prev = nextNode;
+                        prevN->next = nextNode;
+                        prevN = nextNode;
                     }
                     continue;
                 }
