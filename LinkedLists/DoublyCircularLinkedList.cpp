@@ -2,7 +2,7 @@
 
 #include<iostream>
 #include<stdio.h>
-#include<stdlib.h>
+#include<bits/stdc++.h>
 using namespace std;
 
 struct Node{
@@ -170,6 +170,30 @@ class DoublyCircularLinkedList{
         recursiveReverseHelper(head, newHead);
         head = newHead;
     }
+
+    void stackReverse(){
+        stack<Node*> st;
+        if(!head){
+            cout<<"List Empty!"<<endl;
+            return;
+        }
+
+        Node * temp = head;
+        do{
+            st.push(temp);
+            temp = temp->next;
+        }while(temp->next != head);
+
+        head = temp;
+        while(!st.empty()){
+            temp->next = st.top();
+            temp->next->prev = temp;
+            st.pop();
+            temp = temp->next;
+        }
+        temp->next = head;
+        head->prev = temp;
+    }
     void display(){
         if(!head){
             cout<<"List is empty!"<<endl;
@@ -216,5 +240,8 @@ int main(){
 
     list1.recursiveReverse();
     list1.display(); // HEAD <-> 3 <-> 2 <-> 1 <-> 0 <-> 5 <-> 4 <-> 3 <-> 2 <-> HEAD
+
+    list1.stackReverse();
+    list1.display(); //HEAD <-> 2 <-> 3 <-> 4 <-> 5 <-> 0 <-> 1 <-> 2 <-> 3 <-> HEAD
     return 0;
 }
