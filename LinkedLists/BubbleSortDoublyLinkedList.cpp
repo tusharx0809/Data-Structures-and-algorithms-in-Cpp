@@ -102,6 +102,6 @@ int main(){
     list.display(); //NULL <-> 5 <-> 4 <-> 3 <-> 2 <-> 1 <-> 0 <-> NULL
 
     list.bubbleSort();
-    list.display();
+    list.display(); //NULL <-> 0 <-> 1 <-> 2 <-> 3 <-> 4 <-> 5 <-> NULL
     return 0;
 }
