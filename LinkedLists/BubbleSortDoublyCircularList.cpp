@@ -130,7 +130,7 @@ int main()
     list.display(); // HEAD <-> 5 <-> 4 <-> 3 <-> 2 <-> 1 <-> 0 <-> HEAD
 
     list.bubbleSort();
-    list.display();
+    list.display(); //HEAD <-> 0 <-> 1 <-> 2 <-> 3 <-> 4 <-> 5 <-> HEAD
 
     return 0;
 }
