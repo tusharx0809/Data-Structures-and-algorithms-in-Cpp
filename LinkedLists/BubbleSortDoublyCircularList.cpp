@@ -36,6 +36,15 @@ class DoublyCircularList{
             newNode->prev = temp;
             head = newNode;
         }
+        int getlen(){
+            int len = 0;
+            Node *temp = head;
+            do{
+                len++;
+                temp=temp->next;
+            }while(temp != head);
+            return len;
+        }
 
         void display(){
             if(!head){
@@ -54,9 +63,12 @@ class DoublyCircularList{
 
 int main(){
     DoublyCircularList list;
-    for(int i=0; i<5; i++){
+    list.display();
+    for(int i=0; i<=5; i++){
         list.insertAtBeginning(i);
     }
-    list.display();
+    list.display(); //HEAD <-> 5 <-> 4 <-> 3 <-> 2 <-> 1 <-> 0 <-> HEAD
+
+    
     return 0;
 }
