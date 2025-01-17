@@ -24,6 +24,7 @@ class DoublyCircularLinkedList{
         if(!head){
             head = newNode;
             newNode->next = head;
+            newNode->prev = head;
             return;
         }
         Node* temp = head;
