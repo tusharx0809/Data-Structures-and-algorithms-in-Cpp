@@ -1,1 +1,1 @@
-<h2>This folder contains operations on linked lists.</h2>
+<h2><em>This folder contains operations on linked lists.</em></h2>
