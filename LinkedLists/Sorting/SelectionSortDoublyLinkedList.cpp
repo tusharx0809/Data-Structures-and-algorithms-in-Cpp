@@ -28,6 +28,27 @@ class DoublyLinkedList{
             head = newNode;
         }
 
+        void selectionSort(){
+            if(!head || !head->next) return;
+
+            Node *current = head;
+
+            while(current){
+                Node *minNode = current;
+                Node *search = current->next;
+                while(search){
+                    if(search->data < minNode->data){
+                        minNode = search;
+                    }
+                    search=search->next;
+                }
+                if(minNode != current){
+                    swap(current->data, minNode->data);
+                }
+                current = current->next;
+            }
+        }
+
         void display(){
             if(!head){
                 cout<<"List empty!"<<endl;
@@ -51,5 +72,8 @@ int main(){
         list.insertAtBeginning(i);
     }
     list.display(); //NULL <->4 <-> 3 <-> 2 <-> 1 <-> 0 <-> NULL
+
+    list.selectionSort();
+    list.display(); //NULL <->0 <-> 1 <-> 2 <-> 3 <-> 4 <-> NULL
     return 0;
 }
