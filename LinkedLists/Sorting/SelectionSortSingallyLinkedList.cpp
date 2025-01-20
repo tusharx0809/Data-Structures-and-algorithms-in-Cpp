@@ -31,18 +31,40 @@ class LinkedList{
             }
             
             Node *current = head;
+            Node *prevCurrent = NULL;
 
             while(current){
                 Node *minNode = current;
-                Node *searcher = current->next;
-                while(searcher){
-                    if(searcher->data < current->data){
-                        minNode = searcher;
+                Node *prevMin = prevCurrent;
+                Node *search = current->next;
+                Node *prevSearch = current;
+
+                while(search){
+                    if(search->data < minNode->data){
+                        minNode = search;
+                        prevMin = prevSearch;
                     }
-                    searcher = searcher->next;
+                    prevSearch = search;
+                    search = search->next;
                 }
-                swap(minNode->data, current->data);
-                current = current->next;
+
+                if(minNode != current){
+                    Node *temp = minNode->next;
+
+                    if(prevCurrent){
+                        prevCurrent->next = minNode;
+                    }else{
+                        head = minNode;
+                    }
+
+                    if(prevMin){
+                        prevMin->next = current;
+                    }
+                    minNode->next = current->next;
+                    current->next = temp;
+                }
+                prevCurrent = (minNode == current) ? current : minNode;
+                current = prevCurrent->next;
             }
 
         }
