@@ -24,6 +24,28 @@ class LinkedList{
             newNode->next = head;
             head = newNode;
         }
+        
+        void selectionSort(){
+            if(!head || !head->next){
+                return;
+            }
+            
+            Node *current = head;
+
+            while(current){
+                Node *minNode = current;
+                Node *searcher = current->next;
+                while(searcher){
+                    if(searcher->data < current->data){
+                        minNode = searcher;
+                    }
+                    searcher = searcher->next;
+                }
+                swap(minNode->data, current->data);
+                current = current->next;
+            }
+
+        }
 
         void display(){
             if(!head){
@@ -46,6 +68,9 @@ int main(){
     for(int i=0;i<5;i++){
         list.insertAtBeginning(i);
     }
+    list.display();
+    
+    list.selectionSort();
     list.display();
     return 0;
 }
