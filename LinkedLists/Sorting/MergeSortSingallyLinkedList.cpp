@@ -10,7 +10,6 @@ struct Node{
 
 class LinkedList{
     
-
     public:
         Node *head;
         LinkedList() : head(NULL) {}
@@ -78,13 +77,13 @@ class LinkedList{
 
 int main(){
     LinkedList list;
-    list.display();
+    list.display(); //List empty!
 
     for(int i=0;i<5;i++){
         list.insertAtBeginning(i);
     }
-    list.display();
+    list.display(); //4 -> 3 -> 2 -> 1 -> 0 -> NULL
     list.head = list.mergeSort(list.head);
-    list.display();
-    return 0;
+    list.display(); //0 -> 1 -> 2 -> 3 -> 4 -> NULL
+    return 0; 
 }
