@@ -47,5 +47,10 @@ class DoublyLinkedList{
 int main(){
     DoublyLinkedList list;
     list.display();
+
+    for(int i=0;i<5;i++){
+        list.insertAtBeginning(i);
+    }
+    list.display();
     return 0;
 }
