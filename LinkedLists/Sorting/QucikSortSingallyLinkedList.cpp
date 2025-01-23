@@ -19,6 +19,46 @@ class LinkedList{
             newNode->next = head;
             head = newNode;
         }
+        Node *getTail(Node *cur){
+            while(cur != NULL && cur->next != NULL){
+                cur = cur->next;
+            }
+            return cur;
+        }
+
+        Node *partition(Node *head, Node *tail){
+            Node *pivot = head;
+
+            Node *pre = head;
+            Node *cur = head;
+
+            while(cur != tail->next){
+                if(cur->data < pivot->data){
+                    swap(cur->data, pre->next->data);
+                    pre = pre->next;
+                }
+                cur = cur->next;
+            }
+            swap(pivot->data, pre->data);
+            return pre;
+        }
+
+        void quickSortHelper(Node *head, Node *tail){
+            if(head == NULL || head == tail){
+                return;
+            }
+
+            Node *pivot = partition(head, tail);
+            quickSortHelper(head, pivot);
+            quickSortHelper(pivot->next, tail);
+        }
+
+
+        Node *quickSort(Node *head){
+            Node *tail = getTail(head);
+            quickSortHelper(head, tail);
+            return head;
+        }
 
         void display(){
             if(!head){
@@ -53,6 +93,9 @@ int main(){
         list.insertAtBeginning(generated);
     }
 
+    list.display();
+
+    list.head = list.quickSort(list.head);
     list.display();
     return 0;
 }
