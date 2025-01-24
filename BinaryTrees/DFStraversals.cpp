@@ -37,6 +37,24 @@ void preOrderDFS(Node *node){
     preOrderDFS(node->right);
 }
 
+void inOrderDFS(Node *node){
+    if(node == nullptr){
+        return;
+    }
+    inOrderDFS(node->left);
+    cout<<node->data<<" ";
+    inOrderDFS(node->right);
+}
+
+void postOrderDFS(Node *node){
+    if(node == nullptr){
+        return;
+    }
+    postOrderDFS(node->left);
+    postOrderDFS(node->right);
+    cout<<node->data<<" ";
+}
+
 int main(){
 
     //Initialize the nodes
@@ -44,10 +62,22 @@ int main(){
     root->left = new Node(3);
     root->right = new Node(4);
     root->left->left = new Node(5);
+    root->left->right = new Node(6);
+
+    root->right->right = new Node(7);
+    root->right->right->left = new Node(8);
 
     //Traversals
     cout<<"PreOrder Traversal: ";
     preOrderDFS(root);
+    cout<<endl;
 
+    cout<<"InOrder Traversal: ";
+    inOrderDFS(root);
+    cout<<endl;
+
+    cout<<"PostOrder Traversal: ";
+    postOrderDFS(root);
+    cout<<endl;
     return 0;
 }
