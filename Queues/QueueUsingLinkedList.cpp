@@ -5,17 +5,79 @@ using namespace std;
 
 struct Node{
     int data;
-    struct node *next;
+    struct Node *next;
 };
 
 class Queue{
     Node *front;
     Node *tail;
+    int size;
+    int capacity;
 
     public:
-        Queue() : front(nullptr), tail(nullptr) {}
+        Queue(int c) : front(nullptr), tail(nullptr), size(0), capacity(c) {}
+
+        ~Queue() {
+            while (tail != nullptr) {
+                Node* temp = tail;  // Store the current front
+                tail = tail->next; // Move to the next node
+                delete temp;         // Delete the old front
+            }
+            front = nullptr; // Ensure tail is also nullptr after cleanup
+        }
+
+        void enqueue(int data){
+            Node *newNode = new Node();
+            newNode->data = data;
+            newNode->next = nullptr;
+
+            if(!tail){
+                tail = newNode;
+                front = newNode;
+                size++;
+                return;
+            }
+
+            if(size == capacity){
+                cout<<"Queue is full, cannot insert!"<<endl;
+                return;
+            }else{
+                newNode->next = tail;
+                tail = newNode;
+                size++;
+            }
+            Node *temp = tail;
+            while(temp->next != NULL){
+                temp = temp->next;
+            }
+            front = temp;              
+        }
+
+        void display(){
+            if(!tail){
+                cout<<"Queue is empty"<<endl;
+                return;
+            }
+            Node *temp= tail;
+            cout<<"TAIL ->";
+            while(temp != nullptr){
+                cout<<temp->data<<" -> ";
+                temp = temp->next;
+            }
+            cout<<"FRONT"<<endl;
+        }
+
 };
 
 int main(){
+
+    Queue q(5);
+    q.display(); //Queue is empty
+
+    for(int i=0;i<5;i++){
+        q.enqueue(i);
+    }
+    q.display(); //TAIL ->4 -> 3 -> 2 -> 1 -> 0 -> FRONT
+    q.enqueue(5);
     return 0;
 }
