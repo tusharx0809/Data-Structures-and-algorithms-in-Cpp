@@ -61,6 +61,26 @@ class Queue{
             cout<<front->data<<endl;
         }
 
+        void dequeue(){
+            if(!tail){
+                cout<<"Queue is empty"<<endl;
+                return;
+            }
+            if(!tail->next){
+                delete tail;
+                return;
+            }
+            Node *delNode = front;
+            Node *temp = tail;
+            while(temp->next != front){
+                temp = temp->next;
+            }
+            front = temp;
+            front->next = nullptr;
+            delete delNode;
+            size--;
+        }
+
         void display(){
             if(!tail){
                 cout<<"Queue is empty"<<endl;
@@ -88,7 +108,14 @@ int main(){
     q.display(); //TAIL ->4 -> 3 -> 2 -> 1 -> 0 -> FRONT
     q.enqueue(5); //Queue is full, cannot insert!
 
-    q.getFront();
+    q.getFront(); //0
     
+    q.dequeue();
+    q.display();  //TAIL ->4 -> 3 -> 2 -> 1 -> FRONT , 0 dequeued
+
+    q.getFront(); //1
+
+    q.enqueue(5);
+    q.display(); //TAIL ->5 -> 4 -> 3 -> 2 -> 1 -> FRONT
     return 0;
 }
