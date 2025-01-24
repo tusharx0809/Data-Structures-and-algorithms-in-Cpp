@@ -63,11 +63,14 @@ class Queue{
 
         void dequeue(){
             if(!tail){
-                cout<<"Queue is empty"<<endl;
+                cout<<"Queue is already empty"<<endl;
                 return;
             }
-            if(!tail->next){
+            if(tail == front){
                 delete tail;
+                tail = nullptr;
+                front = nullptr;
+                size--;
                 return;
             }
             Node *delNode = front;
@@ -117,5 +120,12 @@ int main(){
 
     q.enqueue(5);
     q.display(); //TAIL ->5 -> 4 -> 3 -> 2 -> 1 -> FRONT
+
+    for(int i=0;i<5;i++){
+        q.dequeue();
+    }
+    q.display();
+
+    q.dequeue();
     return 0;
 }
