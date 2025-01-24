@@ -64,7 +64,18 @@ class Queue{
 };
 
 int main(){
-    Queue q(5);
-    q.display();
+    Queue q(5); //maximum size of queue is 5
+    q.display(); //Queue is empty
+
+    for(int i=0;i<5;i++){
+        q.enqueue(i);
+    }
+    q.display(); //0 <- 1 <- 2 <- 3 <- 4 <-
+    q.enqueue(6); //Queue is full
+
+    q.dequeue();
+    q.display(); //1 <- 2 <- 3 <- 4 <- element dequeued
+
+    q.getFront(); //Front element of queue is: 1
     return 0;
 }
