@@ -52,6 +52,14 @@ class Queue{
             }
             front = temp;              
         }
+        
+        void getFront(){
+            if(!tail){
+                cout<<"Queue is empty"<<endl;
+                return;
+            }
+            cout<<front->data<<endl;
+        }
 
         void display(){
             if(!tail){
@@ -71,13 +79,16 @@ class Queue{
 
 int main(){
 
-    Queue q(5);
+    Queue q(5); //Initialize queue of capacity 5
     q.display(); //Queue is empty
 
     for(int i=0;i<5;i++){
         q.enqueue(i);
     }
     q.display(); //TAIL ->4 -> 3 -> 2 -> 1 -> 0 -> FRONT
-    q.enqueue(5);
+    q.enqueue(5); //Queue is full, cannot insert!
+
+    q.getFront();
+    
     return 0;
 }
