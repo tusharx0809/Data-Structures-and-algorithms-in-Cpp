@@ -7,15 +7,15 @@ using namespace std;
 
 struct Node{
     int data;
-    Node* next = NULL;
-    Node* prev = NULL;
+    Node* next = nullptr;
+    Node* prev = nullptr;
 };
 
 class DoublyCircularLinkedList{
     Node* head;
 
     public:
-    DoublyCircularLinkedList() : head(NULL) {};
+    DoublyCircularLinkedList() : head(nullptr) {};
 
     //Insertion
     void insertAtBeginning(int value){
@@ -135,9 +135,9 @@ class DoublyCircularLinkedList{
         if(!head->next){
             return;
         }
-        Node* nextNode = NULL;
+        Node* nextNode = nullptr;
         Node* cur = head;
-        Node* prevNode = NULL;
+        Node* prevNode = nullptr;
 
         Node* originalNext = head->next;
 
@@ -167,7 +167,7 @@ class DoublyCircularLinkedList{
         cur->next = newHead;
     }
     void recursiveReverse(){
-        Node* newHead = NULL;
+        Node* newHead = nullptr;
         recursiveReverseHelper(head, newHead);
         head = newHead;
     }

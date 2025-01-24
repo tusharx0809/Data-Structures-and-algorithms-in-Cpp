@@ -14,13 +14,13 @@ class CircularLinkedList
     Node *head;
 
 public:
-    CircularLinkedList() : head(NULL) {}
+    CircularLinkedList() : head(nullptr) {}
 
     void insertAtBeginning(int val)
     {
         Node *newNode = new Node();
         newNode->data = val;
-        newNode->next = NULL;
+        newNode->next = nullptr;
         if (!head)
         {
             head = newNode;
@@ -55,7 +55,7 @@ public:
         for (int i = 0; i < len - 1; i++)
         {
             Node *current = head;
-            Node *prev = NULL;
+            Node *prev = nullptr;
             Node *tail = head;
             while (tail->next != head) tail = tail->next;  // Find tail
             

@@ -16,7 +16,7 @@ class LinkedList
     Node *head; // Pointer to the first node
 
 public:
-    LinkedList() : head(NULL) {} // Constructor intitializes head to NULL
+    LinkedList() : head(nullptr) {} // Constructor intitializes head to nullptr
 
     // Insertion
     void insertAtBeginning(int value)
@@ -30,16 +30,16 @@ public:
     {
         Node *newNode = new Node();
         newNode->data = value;
-        newNode->next = NULL;
-        if (head == NULL)
+        newNode->next = nullptr;
+        if (head == nullptr)
         {
             head = newNode;
-            newNode->next = NULL;
+            newNode->next = nullptr;
         }
         else
         {
             Node *temp = head;
-            while (temp->next != NULL)
+            while (temp->next != nullptr)
             {
                 temp = temp->next;
             }
@@ -50,8 +50,8 @@ public:
     {
         Node *newNode = new Node();
         newNode->data = value;
-        newNode->next = NULL;
-        if (head == NULL || position == 1)
+        newNode->next = nullptr;
+        if (head == nullptr || position == 1)
         {
             insertAtBeginning(value);
             return;
@@ -90,7 +90,7 @@ public:
         if (!head->next)
         {
             delete head;
-            head = NULL;
+            head = nullptr;
             return;
         }
 
@@ -101,7 +101,7 @@ public:
             temp = temp->next;
         }
         delete temp->next;
-        temp->next = NULL;
+        temp->next = nullptr;
     }
     void deleteFromPosition(int position)
     {
@@ -134,14 +134,14 @@ public:
             cout << "List is empty!" << endl;
             return;
         }
-        if (head->next == NULL)
+        if (head->next == nullptr)
         {
             return;
         }
 
-        Node *prevNode = NULL;
+        Node *prevNode = nullptr;
         Node *cur = head;
-        Node *nextNode = NULL;
+        Node *nextNode = nullptr;
 
         while (cur)
         {
@@ -166,12 +166,12 @@ public:
         }
         recursiveReverseHelper(cur->next, newHead);
         cur->next->next = cur;
-        cur->next = NULL;
+        cur->next = nullptr;
     }
 
     void recursiveReverse()
     {
-        Node *newHead = NULL;
+        Node *newHead = nullptr;
         recursiveReverseHelper(head, newHead);
         head = newHead;
     }
@@ -187,7 +187,7 @@ public:
         }
 
         Node *temp = head;
-        while (temp->next != NULL)
+        while (temp->next != nullptr)
         {
             st.push(temp);
             temp = temp->next;
@@ -201,7 +201,7 @@ public:
             st.pop();
             temp = temp->next;
         }
-        temp->next = NULL;
+        temp->next = nullptr;
     }
 
     
@@ -218,7 +218,7 @@ public:
             cout << temp->data << " -> ";
             temp = temp->next;
         }
-        cout << "NULL" << endl;
+        cout << "nullptr" << endl;
     }
 };
 
@@ -231,34 +231,34 @@ int main()
     {
         list1.insertAtBeginning(i);
     }
-    list1.display(); // 6 -> 4 -> 2 -> 0 -> NULL
+    list1.display(); // 6 -> 4 -> 2 -> 0 -> nullptr
 
     for (int i = 0; i < 7; i += 2)
     {
         list1.insertAtEnd(i);
     }
-    list1.display(); // 6 -> 4 -> 2 -> 0 -> 0 -> 2 -> 4 -> 6 -> NULL
+    list1.display(); // 6 -> 4 -> 2 -> 0 -> 0 -> 2 -> 4 -> 6 -> nullptr
 
-    list1.insertAtPosition(5, 2); // 6 -> 5 -> 4 -> 2 -> 0 -> 0 -> 2 -> 4 -> 6 -> NULL
+    list1.insertAtPosition(5, 2); // 6 -> 5 -> 4 -> 2 -> 0 -> 0 -> 2 -> 4 -> 6 -> nullptr
     list1.display();
 
     list1.deleteFromBegenning();
-    list1.display(); // 5 -> 4 -> 2 -> 0 -> 0 -> 2 -> 4 -> 6 -> NULL
+    list1.display(); // 5 -> 4 -> 2 -> 0 -> 0 -> 2 -> 4 -> 6 -> nullptr
 
     list1.deleteFromEnd();
-    list1.display(); // 5 -> 4 -> 2 -> 0 -> 0 -> 2 -> 4 -> NULL
+    list1.display(); // 5 -> 4 -> 2 -> 0 -> 0 -> 2 -> 4 -> nullptr
 
     list1.deleteFromPosition(3);
-    list1.display(); // 5 -> 4 -> 0 -> 0 -> 2 -> 4 -> NULL
+    list1.display(); // 5 -> 4 -> 0 -> 0 -> 2 -> 4 -> nullptr
 
     list1.reverse();
-    list1.display(); // 4 -> 2 -> 0 -> 0 -> 4 -> 5 -> NULL Reverse
+    list1.display(); // 4 -> 2 -> 0 -> 0 -> 4 -> 5 -> nullptr Reverse
 
     list1.recursiveReverse();
-    list1.display(); // 5 -> 4 -> 0 -> 0 -> 2 -> 4 -> NULL Recursive Reverse
+    list1.display(); // 5 -> 4 -> 0 -> 0 -> 2 -> 4 -> nullptr Recursive Reverse
 
     list1.stackReverse();
-    list1.display(); // 4 -> 2 -> 0 -> 0 -> 4 -> 5 -> NULL
+    list1.display(); // 4 -> 2 -> 0 -> 0 -> 4 -> 5 -> nullptr
 
     return 0;
 }

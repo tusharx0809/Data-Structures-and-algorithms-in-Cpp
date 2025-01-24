@@ -12,13 +12,13 @@ struct Node{
 class DoublyLinkedList{
     Node* head;
     public:
-    DoublyLinkedList() : head(NULL) {}
+    DoublyLinkedList() : head(nullptr) {}
 
     void insertAtBeginning(int val){
         Node *newNode = new Node();
         newNode->data = val;
-        newNode->next = NULL;
-        newNode->prev = NULL;
+        newNode->next = nullptr;
+        newNode->prev = nullptr;
 
         if(!head){
             head = newNode;
@@ -82,13 +82,13 @@ class DoublyLinkedList{
             cout<<"Empty List!"<<endl;
             return;
         }
-        cout<< "NULL <-> ";
+        cout<< "nullptr <-> ";
         Node *temp = head;
         while(temp){
             cout<<temp->data<<" <-> ";
             temp = temp->next;
         }
-        cout<<"NULL"<<endl;
+        cout<<"nullptr"<<endl;
     }
 };
 
@@ -99,9 +99,9 @@ int main(){
     for(int i=0;i<=5;i++){
         list.insertAtBeginning(i);
     }
-    list.display(); //NULL <-> 5 <-> 4 <-> 3 <-> 2 <-> 1 <-> 0 <-> NULL
+    list.display(); //nullptr <-> 5 <-> 4 <-> 3 <-> 2 <-> 1 <-> 0 <-> nullptr
 
     list.bubbleSort();
-    list.display(); //NULL <-> 0 <-> 1 <-> 2 <-> 3 <-> 4 <-> 5 <-> NULL
+    list.display(); //nullptr <-> 0 <-> 1 <-> 2 <-> 3 <-> 4 <-> 5 <-> nullptr
     return 0;
 }

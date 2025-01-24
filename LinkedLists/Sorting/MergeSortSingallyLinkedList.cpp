@@ -12,7 +12,7 @@ class LinkedList{
     
     public:
         Node *head;
-        LinkedList() : head(NULL) {}
+        LinkedList() : head(nullptr) {}
 
         void insertAtBeginning(int value){
             Node *newNode = new Node();
@@ -25,20 +25,20 @@ class LinkedList{
             Node *fast = head;
             Node *slow = head;
 
-            while(fast != NULL && fast->next != NULL){
+            while(fast != nullptr && fast->next != nullptr){
                 fast = fast->next->next;
-                if(fast != NULL){
+                if(fast != nullptr){
                     slow = slow->next;
                 }
             }
             Node *temp = slow->next;
-            slow->next = NULL;
+            slow->next = nullptr;
             return temp;
         }
 
         Node *merge(Node *first, Node *second){
-            if(first == NULL) return second;
-            if(second == NULL) return first;
+            if(first == nullptr) return second;
+            if(second == nullptr) return first;
 
             if(first->data < second->data){
                 first->next = merge(first->next, second);
@@ -71,7 +71,7 @@ class LinkedList{
                 cout<<temp->data<<" -> ";
                 temp = temp->next;
             }
-            cout<<"NULL"<<endl;
+            cout<<"nullptr"<<endl;
         }
 };
 
@@ -82,8 +82,8 @@ int main(){
     for(int i=0;i<5;i++){
         list.insertAtBeginning(i);
     }
-    list.display(); //4 -> 3 -> 2 -> 1 -> 0 -> NULL
+    list.display(); //4 -> 3 -> 2 -> 1 -> 0 -> nullptr
     list.head = list.mergeSort(list.head);
-    list.display(); //0 -> 1 -> 2 -> 3 -> 4 -> NULL
+    list.display(); //0 -> 1 -> 2 -> 3 -> 4 -> nullptr
     return 0; 
 }

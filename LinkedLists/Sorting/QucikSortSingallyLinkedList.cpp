@@ -11,7 +11,7 @@ struct Node{
 class LinkedList{
     public:
         Node *head;
-        LinkedList() : head(NULL) {}
+        LinkedList() : head(nullptr) {}
 
         void insertAtBeginning(int value){
             Node *newNode = new Node();
@@ -20,7 +20,7 @@ class LinkedList{
             head = newNode;
         }
         Node *getTail(Node *cur){
-            while(cur != NULL && cur->next != NULL){
+            while(cur != nullptr && cur->next != nullptr){
                 cur = cur->next;
             }
             return cur;
@@ -44,7 +44,7 @@ class LinkedList{
         }
 
         void quickSortHelper(Node *head, Node *tail){
-            if(head == NULL || head == tail){
+            if(head == nullptr || head == tail){
                 return;
             }
 
@@ -70,7 +70,7 @@ class LinkedList{
                 cout<<temp->data<<" -> ";
                 temp = temp->next;
             }
-            cout<<"NULL"<<endl;
+            cout<<"nullptr"<<endl;
         }
 };
 

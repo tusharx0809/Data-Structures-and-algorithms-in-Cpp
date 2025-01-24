@@ -13,12 +13,12 @@ class LinkedList{
     Node* head;
 
     public:
-        LinkedList() : head(NULL) {}
+        LinkedList() : head(nullptr) {}
 
         void insertAtBeginning(int val){
             Node *newNode = new Node();
             newNode->data = val;
-            newNode->next = NULL;
+            newNode->next = nullptr;
             if(!head){
                 head = newNode;
                 return;
@@ -84,7 +84,7 @@ class LinkedList{
                 cout<<temp->data<<" -> ";
                 temp=temp->next;
             }
-            cout<<"NULL"<<endl;
+            cout<<"nullptr"<<endl;
         }
 };
 
@@ -95,10 +95,10 @@ int main(){
     for(int i=0; i<=5 ; i++){
         list.insertAtBeginning(i);
     }
-    list.display(); //5 -> 4 -> 3 -> 2 -> 1 -> 0 -> NULL
+    list.display(); //5 -> 4 -> 3 -> 2 -> 1 -> 0 -> nullptr
 
     list.bubbleSort();
-    list.display(); //0 -> 1 -> 2 -> 3 -> 4 -> 5 -> NULL
+    list.display(); //0 -> 1 -> 2 -> 3 -> 4 -> 5 -> nullptr
 
     return 0;
 }

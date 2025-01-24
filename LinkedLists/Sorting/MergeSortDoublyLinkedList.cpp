@@ -12,13 +12,13 @@ struct Node{
 class DoublyLinkedList{
     public:
     Node *head;
-    DoublyLinkedList() : head(NULL) {}
+    DoublyLinkedList() : head(nullptr) {}
 
     void insertAtBeginning(int value){
         Node *newNode = new Node();
         newNode->data = value;
-        newNode->next = NULL;
-        newNode->prev = NULL;
+        newNode->next = nullptr;
+        newNode->prev = nullptr;
 
         if(!head){
             head = newNode;
@@ -32,35 +32,35 @@ class DoublyLinkedList{
         Node *fast = head;
         Node *slow = head;
 
-        while(fast != NULL && fast->next != NULL && fast->next->next != NULL){
+        while(fast != nullptr && fast->next != nullptr && fast->next->next != nullptr){
             fast = fast->next->next;
             slow = slow->next;
         }
 
         Node *temp = slow->next;
-        slow->next = NULL;
-        if(temp != NULL){
-            temp->prev = NULL;
+        slow->next = nullptr;
+        if(temp != nullptr){
+            temp->prev = nullptr;
         }
         return temp;
     }
     Node *merge(Node *first, Node *second){
-        if(first == NULL) return second;
-        if(second == NULL) return first;
+        if(first == nullptr) return second;
+        if(second == nullptr) return first;
 
         if(first->data < second->data){
             first->next = merge(first->next, second);
-            if(first->next != NULL){
+            if(first->next != nullptr){
                 first->next->prev = first;
             }
-            first->prev = NULL;
+            first->prev = nullptr;
             return first;
         }else{
             second->next = merge(first, second->next);
-            if(second->next != NULL){
+            if(second->next != nullptr){
                 second->next->prev = second;
             }
-            second->prev = NULL;
+            second->prev = nullptr;
             return second;
         }
 
@@ -83,12 +83,12 @@ class DoublyLinkedList{
             return;
         }
         Node *temp = head;
-        cout<<"NULL <-> ";
+        cout<<"nullptr <-> ";
         while(temp){
             cout<<temp->data<<" <-> ";
             temp = temp->next;
         }
-        cout<<"NULL"<<endl;
+        cout<<"nullptr"<<endl;
     }
 };
 
@@ -99,7 +99,7 @@ int main(){
     for(int i=0;i<5;i++){
         list.insertAtBeginning(i);
     }
-    list.display(); //NULL <-> 4 <-> 3 <-> 2 <-> 1 <-> 0 <-> NULL
+    list.display(); //nullptr <-> 4 <-> 3 <-> 2 <-> 1 <-> 0 <-> nullptr
 
     list.head = list.mergeSort(list.head);
     list.display();

@@ -14,14 +14,14 @@ using namespace std;
 
 struct Node{
     int data;
-    Node* next = NULL;
+    Node* next = nullptr;
 };
 
 class CircularLinkedList{
     Node* head;
 
     public:
-    CircularLinkedList() : head(NULL) {};
+    CircularLinkedList() : head(nullptr) {};
 
     //Insertions
     void insertAtBeginning(int value){
@@ -124,9 +124,9 @@ class CircularLinkedList{
             return;
         }
         
-        Node* prevNode = NULL;
+        Node* prevNode = nullptr;
         Node* cur = head;
-        Node* nextNode = NULL;
+        Node* nextNode = nullptr;
     
         do{
             nextNode = cur->next;
@@ -151,7 +151,7 @@ class CircularLinkedList{
         cur->next = newHead;
     }
     void recursiveReverse(){
-        Node* newHead = NULL;
+        Node* newHead = nullptr;
         recursiveReverseHelper(head, newHead);
         head = newHead;
     }

@@ -7,7 +7,7 @@ using namespace std;
 
 struct Node{
     int data;
-    Node* next = NULL;
+    Node* next = nullptr;
 };
 
 class Stack{
@@ -15,11 +15,11 @@ class Stack{
 
     public:
     //Constructor
-    Stack() : top(NULL) {};
+    Stack() : top(nullptr) {};
 
     //Destructor
     ~Stack(){
-        while(top != NULL){
+        while(top != nullptr){
             Node* temp = top;
             top = top->next;
             delete temp;
@@ -53,7 +53,7 @@ class Stack{
         return top->data;
     }
     bool isEmpty(){
-        return top == NULL;
+        return top == nullptr;
     }
     void display(){
         if(isEmpty()){
@@ -62,7 +62,7 @@ class Stack{
         }
         Node* temp = top;
         cout<<"Stack: ";
-        while(temp != NULL){
+        while(temp != nullptr){
             cout<<temp->data<<" ";
             temp = temp->next;
         }

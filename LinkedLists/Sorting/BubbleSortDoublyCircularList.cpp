@@ -15,14 +15,14 @@ class DoublyCircularList
     Node *head;
 
 public:
-    DoublyCircularList() : head(NULL) {};
+    DoublyCircularList() : head(nullptr) {};
 
     void insertAtBeginning(int value)
     {
         Node *newNode = new Node();
         newNode->data = value;
-        newNode->next = NULL;
-        newNode->prev = NULL;
+        newNode->next = nullptr;
+        newNode->prev = nullptr;
 
         if (!head)
         {
@@ -62,7 +62,7 @@ public:
         for (int i = 0; i < len - 1; i++)
         {
             Node *cur = head;
-            Node *prevNode = NULL;
+            Node *prevNode = nullptr;
             Node *tail = head;
             while (tail->next != head)
                 tail = tail->next;

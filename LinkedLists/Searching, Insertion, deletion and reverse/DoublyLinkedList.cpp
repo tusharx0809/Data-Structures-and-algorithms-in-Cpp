@@ -9,8 +9,8 @@ using namespace std;
 struct Node
 {
     int data;
-    Node *next = NULL;
-    Node *prev = NULL;
+    Node *next = nullptr;
+    Node *prev = nullptr;
 };
 
 class DoublyLinkedList
@@ -18,15 +18,15 @@ class DoublyLinkedList
     Node *head;
 
 public:
-    DoublyLinkedList() : head(NULL) {}; // Constructor initializes head pointer to NULL;
+    DoublyLinkedList() : head(nullptr) {}; // Constructor initializes head pointer to nullptr;
 
     // Insertion
     void insertAtBeginning(int value)
     {
         Node *newNode = new Node();
         newNode->data = value;
-        newNode->next = NULL;
-        newNode->prev = NULL;
+        newNode->next = nullptr;
+        newNode->prev = nullptr;
 
         if (!head)
         {
@@ -42,8 +42,8 @@ public:
     {
         Node *newNode = new Node();
         newNode->data = value;
-        newNode->next = NULL;
-        newNode->prev = NULL;
+        newNode->next = nullptr;
+        newNode->prev = nullptr;
 
         if (!head)
         {
@@ -51,7 +51,7 @@ public:
         }
         Node *temp = head;
 
-        while (temp->next != NULL)
+        while (temp->next != nullptr)
         {
             temp = temp->next;
         }
@@ -62,14 +62,14 @@ public:
     {
         Node *newNode = new Node();
         newNode->data = value;
-        newNode->next = NULL;
-        newNode->prev = NULL;
+        newNode->next = nullptr;
+        newNode->prev = nullptr;
 
         if (!head)
         {
             cout << "List is empty" << endl;
         }
-        if (head == NULL || position == 1)
+        if (head == nullptr || position == 1)
         {
             newNode->next = head;
             head = newNode;
@@ -113,7 +113,7 @@ public:
             temp = temp->next;
         }
         delete temp->next;
-        temp->next = NULL;
+        temp->next = nullptr;
     }
     void deleteFromPosition(int position)
     {
@@ -147,9 +147,9 @@ public:
         if(!head->next){
             return;
         }
-        Node* nextNode = NULL;
+        Node* nextNode = nullptr;
         Node* cur = head;
-        Node* prevNode = NULL;
+        Node* prevNode = nullptr;
 
         while(cur){
             nextNode = cur->next;
@@ -171,10 +171,10 @@ public:
         recursiveReverseHelper(cur->next, newHead);
         cur->next->next = cur;
         cur->prev = cur->next;
-        cur->next = NULL;
+        cur->next = nullptr;
     }
     void recursiveReverse(){
-        Node* newHead = NULL;
+        Node* newHead = nullptr;
         recursiveReverseHelper(head, newHead);
         head = newHead;
     }
@@ -188,7 +188,7 @@ public:
         }
 
         Node* temp = head;
-        while(temp->next != NULL){
+        while(temp->next != nullptr){
             st.push(temp);
             temp = temp->next;
         }
@@ -200,8 +200,8 @@ public:
             st.pop();
             temp = temp->next;
         }
-        temp->next = NULL;
-        head->prev = NULL;
+        temp->next = nullptr;
+        head->prev = nullptr;
     }
     void display()
     {
@@ -211,13 +211,13 @@ public:
             return;
         }
         Node *temp = head;
-        cout << "NULL <-> ";
+        cout << "nullptr <-> ";
         while (temp)
         {
             cout << temp->data << " <-> ";
             temp = temp->next;
         }
-        cout << "NULL" << endl;
+        cout << "nullptr" << endl;
     }
 };
 
@@ -233,7 +233,7 @@ int main()
             list1.insertAtBeginning(i);
         }
     }
-    list1.display(); // NULL <-> 6 <-> 4 <-> 2 <-> NULL
+    list1.display(); // nullptr <-> 6 <-> 4 <-> 2 <-> nullptr
 
     for (int i = 0; i < 8; i += 2)
     {
@@ -242,30 +242,30 @@ int main()
             list1.insertAtEnd(i);
         }
     }
-    list1.display(); // NULL <-> 6 <-> 4 <-> 2 <-> 2 <-> 4 <-> 6 <-> NULL
+    list1.display(); // nullptr <-> 6 <-> 4 <-> 2 <-> 2 <-> 4 <-> 6 <-> nullptr
 
     list1.insertAtPosition(5, 2);
-    list1.display(); // NULL <-> 6 <-> 5 <-> 4 <-> 2 <-> 2 <-> 4 <-> 6 <-> NULL
+    list1.display(); // nullptr <-> 6 <-> 5 <-> 4 <-> 2 <-> 2 <-> 4 <-> 6 <-> nullptr
 
-    list1.insertAtPosition(7, 1); // NULL <-> 7 <-> 6 <-> 5 <-> 4 <-> 2 <-> 2 <-> 4 <-> 6 <-> NULL
+    list1.insertAtPosition(7, 1); // nullptr <-> 7 <-> 6 <-> 5 <-> 4 <-> 2 <-> 2 <-> 4 <-> 6 <-> nullptr
     list1.display();
 
     list1.deleteFromBeginning();
-    list1.display(); // NULL <-> 6 <-> 5 <-> 4 <-> 2 <-> 2 <-> 4 <-> 6 <-> NULL
+    list1.display(); // nullptr <-> 6 <-> 5 <-> 4 <-> 2 <-> 2 <-> 4 <-> 6 <-> nullptr
 
     list1.deleteFromEnd();
-    list1.display(); // NULL <-> 6 <-> 5 <-> 4 <-> 2 <-> 2 <-> 4 <-> NULL
+    list1.display(); // nullptr <-> 6 <-> 5 <-> 4 <-> 2 <-> 2 <-> 4 <-> nullptr
 
     list1.deleteFromPosition(3);
-    list1.display(); // NULL <-> 6 <-> 5 <-> 2 <-> 2 <-> 4 <-> NULL
+    list1.display(); // nullptr <-> 6 <-> 5 <-> 2 <-> 2 <-> 4 <-> nullptr
 
     list1.reverse(); 
-    list1.display(); //NULL <-> 4 <-> 2 <-> 2 <-> 5 <-> 6 <-> NULL
+    list1.display(); //nullptr <-> 4 <-> 2 <-> 2 <-> 5 <-> 6 <-> nullptr
 
     list1.recursiveReverse();
-    list1.display(); //NULL <-> 6 <-> 5 <-> 2 <-> 2 <-> 4 <-> NULL
+    list1.display(); //nullptr <-> 6 <-> 5 <-> 2 <-> 2 <-> 4 <-> nullptr
 
     list1.stackReverse();
-    list1.display(); //NULL <-> 4 <-> 2 <-> 2 <-> 5 <-> 6 <-> NULL
+    list1.display(); //nullptr <-> 4 <-> 2 <-> 2 <-> 5 <-> 6 <-> nullptr
     return 0;
 }
