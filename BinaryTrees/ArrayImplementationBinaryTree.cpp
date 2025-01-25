@@ -52,6 +52,12 @@ int main(){
     set_left('D',1);
     set_right('E',1);
     set_right('F',2);
-    print_tree();
+    print_tree(); //ABCDE-F---
     return 0;
 }
+
+//      A(0)    
+//     /   \'
+//    B(1)  C(2)  
+//  /   \      \'
+// D(3)  E(4)   F(6)
