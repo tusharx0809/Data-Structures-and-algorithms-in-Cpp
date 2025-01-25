@@ -46,7 +46,7 @@ vector<vector<int>> levelOrder(Node *root){
 
 int main(){
     // Create binary tree
-      //      1         
+    //      1         
     //     / \       
     //    3   2      
     //          \   
@@ -66,6 +66,6 @@ int main(){
     // Print the result
     for (vector<int> level : res) 
         for (int data : level)
-            cout << data << " ";
-    return 0;
+            cout << data << " "; //1 3 2 4 6 5
+    return 0; 
 }
