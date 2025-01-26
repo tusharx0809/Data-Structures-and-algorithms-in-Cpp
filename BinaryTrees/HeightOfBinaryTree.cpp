@@ -16,7 +16,7 @@ class Node{
         }
 };
 
-//Recursive approach
+//Recursive approach //O(n) Time and O(h) Space
 int heightUsingRecursion(Node *root){
     if(root == nullptr) return -1;
 
@@ -24,6 +24,36 @@ int heightUsingRecursion(Node *root){
     int right_height = heightUsingRecursion(root->right);
 
     return max(left_height, right_height) + 1;
+}
+
+//Level Order traversal approcah // O(n) Time and O(h) Space
+int heightUsingLevelOrderTraversal(Node *root){
+    if(!root) return 0;
+
+    int height = 0;
+    
+    queue<Node *> q;
+
+    q.push(root);
+    q.push(nullptr);
+
+    while(!q.empty()){
+        Node *cur = q.front();
+        q.pop();
+
+        if(cur == nullptr){
+            height++;
+
+            if(!q.empty()){
+                q.push(nullptr);
+            }
+        }else{
+            if(cur->left) q.push(cur->left);
+            if(cur->right) q.push(cur->right);
+        }
+    }
+    return height - 1;
+    
 }
 
 int main(){
@@ -40,6 +70,10 @@ int main(){
     root->right = new Node(3);
     root->left->left = new Node(4);
     root->left->right = new Node(5);
+
     cout << heightUsingRecursion(root); //2
+    cout<<endl;
+    cout<< heightUsingLevelOrderTraversal(root);
+
     return 0;
 }
