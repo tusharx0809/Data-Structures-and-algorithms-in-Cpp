@@ -73,7 +73,7 @@ int main(){
 
     cout << heightUsingRecursion(root); //2
     cout<<endl;
-    cout<< heightUsingLevelOrderTraversal(root);
+    cout<< heightUsingLevelOrderTraversal(root); //2
 
     return 0;
 }
