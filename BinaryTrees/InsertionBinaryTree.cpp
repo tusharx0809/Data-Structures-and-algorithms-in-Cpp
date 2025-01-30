@@ -44,6 +44,74 @@ Node *InsertNode(Node *root, int data){
     return root;
 }
 
+void deleteDeepest(Node *root, Node* dnode){
+    queue<Node*> q;
+    q.push(root);
+
+    Node *curr;
+
+    while(!q.empty()){
+        curr = q.front();
+        q.pop();
+
+        if(curr == dnode){
+            curr = nullptr;
+            delete(dnode);
+            return;
+        }
+
+        if(curr->right){
+            if(curr->right == dnode){
+                curr->right = nullptr;
+                delete(dnode);
+                return;
+            }
+            q.push(curr->right);
+        }
+
+        if(curr->left){
+            if(curr->left == dnode){
+                curr->left = nullptr;
+                delete(dnode);
+                return;
+            }
+            q.push(curr->left);
+        }
+    }
+
+}
+
+Node *deletion(Node *root, int key){
+    if(root == nullptr) return nullptr;
+
+    if(root->left == nullptr && root->right == nullptr){
+        if(root->data = key) return nullptr;
+        else return root;
+    }
+
+    queue<Node*> q;
+    q.push(root);
+
+    Node *curr;
+    Node *keyNode = nullptr;
+
+    while(!q.empty()){
+        curr = q.front();
+        q.pop();
+
+        if(curr->data == key) keyNode = curr;
+        if(curr->left) q.push(curr->left);
+        if(curr->right) q.push(curr->right);
+    }
+
+    if(keyNode != nullptr){
+        int x = curr->data;
+        keyNode->data = x;
+        deleteDeepest(root, curr);
+    }
+    return root;
+}
+
 void inOrder(Node *curr){
     if(curr == nullptr){
         return;
@@ -80,6 +148,16 @@ int main(){
     //    11     12
     //  /   \   /  \
     // 13   14 15    16
+
+    cout<<endl;
+    root = deletion(root, 11);
+    inOrder(root);
+    //  Tree after deletion
+    //        10
+    //      /    \
+    //    16     12
+    //  /   \   /  \
+    // 13   14 15   
 
     return 0;
 }
