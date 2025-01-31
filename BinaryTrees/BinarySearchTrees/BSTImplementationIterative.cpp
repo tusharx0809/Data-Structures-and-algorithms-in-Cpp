@@ -1,4 +1,4 @@
-//CPP program to implement BST iteratively
+//CPP program to implement BST iteratively with search operation
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -39,6 +39,14 @@ Node* insert(Node *root, int key){
     return root;
 }
 
+Node *search(Node *root, int key){
+    if(root == nullptr || root->data == key) return root;
+
+    if(root->data < key) return search(root->right, key);
+
+    return search(root->left, key);
+}
+
 void inOrder(Node *root){
     if(root == nullptr){
         return;
@@ -65,5 +73,9 @@ int main(){
     root = insert(root, 80);
     
     inOrder(root); //20 30 40 50 60 70 80
+    cout<<endl;
+    (search(root, 19) != NULL) ? cout<<"Found"<<endl : cout<<"Not Found"<<endl; //Not Found
+    (search(root, 20) != NULL) ? cout<<"Found"<<endl : cout<<"Not Found"<<endl; //Found
+
     return 0;
 }
