@@ -36,7 +36,7 @@ Node *buildTreeRecur(vector<int> &inorder, vector<int> &level, int s, int e){
     vector<int> lLevel(lcnt);
     vector<int> rLevel(rCnt);
 
-    int l = 0, r= 0;
+    int l = 0, r = 0;
 
     for(int i = 1;i<e-s+1;i++){
         int j = searchValue(inorder, level[i], s, e);
