@@ -1,4 +1,4 @@
-//CPP program to implement Binary Search Tree
+//CPP program to implement BST iteratively
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -7,33 +7,47 @@ class Node{
     public:
         int data;
         Node *left, *right;
-        
         Node(int x){
             data = x;
             left = right = nullptr;
         }
 };
 
-Node *insert(Node *root, int key){
-    if(root == nullptr) return new Node(key);
+Node* insert(Node *root, int key){
+    Node *temp = new Node(key);
 
-    if(root->data == key) return root;
+    if(root == nullptr) return temp;
 
-    if(root->data < key){
-        root->right = insert(root->right, key);
+    Node *parent = nullptr, *curr = root;
+
+    while(curr != nullptr){
+        parent = curr;
+        if(curr->data > key){
+            curr = curr->left;
+        }else if(curr->data < key){
+            curr = curr->right;
+        }else{
+            return root;
+        }
+    }
+
+    if(parent->data > key){
+        parent->left = temp;
     }else{
-        root->left = insert(root->left, key);
+        parent->right = temp;
     }
     return root;
 }
+
 void inOrder(Node *root){
-    if(root == NULL){
+    if(root == nullptr){
         return;
     }
     inOrder(root->left);
     cout<<root->data<<" ";
     inOrder(root->right);
 }
+
 int main(){
     // Creating the following BST
     //      50
@@ -51,6 +65,5 @@ int main(){
     root = insert(root, 80);
     
     inOrder(root); //20 30 40 50 60 70 80
-
     return 0;
 }
