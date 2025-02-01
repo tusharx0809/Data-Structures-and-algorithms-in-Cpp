@@ -39,6 +39,40 @@ Node *insert(Node *root, int key){
     return root;
 }
 
+Node *getSuccessor(Node *cur){
+    cur = cur->right;
+    while(cur != nullptr && cur->left != nullptr){
+        cur = cur->left;
+    }
+    return cur;
+}
+
+Node *delNode(Node *root, int x){
+    if(root == nullptr) return root; 
+
+    if(root->data > x){
+        root->left = delNode(root->left, x);
+    }else if(root->data < x){
+        root->right = delNode(root->right, x);
+    }else{
+        if(root->left == nullptr){
+            Node *temp = root->right;
+            delete root;
+            return temp;
+        }
+        if(root->right == nullptr){
+            Node *temp = root->left;
+            delete root;
+            return temp;
+        }
+
+        Node *succ = getSuccessor(root);
+        root->data = succ->data;
+        root->right = delNode(root->right, succ->data);
+    }
+    return root;
+}
+
 void inOrder(Node *root){
     if(root == nullptr){
         return;
@@ -65,8 +99,51 @@ int main(){
     for(int val: nodes){
         root = insert(root, val);
     }
-    
-    inOrder(root); //20 30 40 50 60 70 80
+    inOrder(root); //10 20 25 30 35 40 45 50 55 60 65 70 75 80 85 
     cout<<endl;
+
+
+    delNode(root, 10); //Deleting Leaf Node 10
+    inOrder(root); //20 25 30 35 40 45 50 55 60 65 70 75 80 85
+    cout<<endl;
+     /*
+                      50
+                   /      \
+                 30        70
+               /    \     /    \
+             20      40  60     80
+               \    /  \  / \   /  \
+               25 35  45 55 65 75  85
+*/
+
+    
+
+    delNode(root, 20); //deleting node with one child
+    inOrder(root);  //25 30 35 40 45 50 55 60 65 70 75 80 85
+    cout<<endl;
+
+/*
+                      50
+                   /      \
+                 30        70
+               /    \     /    \
+             25      40  60     80
+                    /  \  / \   /  \
+                   35  45 55 65 75  85
+*/
+
+    delNode(root, 30);
+    inOrder(root);
+    cout<<endl;
+/*
+                      50
+                   /      \
+                 35        70
+               /    \     /    \
+             25      40  60     80
+                       \  / \   /  \
+                       45 55 65 75  85
+
+*/
     return 0;
 }
