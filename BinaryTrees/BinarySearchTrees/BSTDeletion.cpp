@@ -103,8 +103,8 @@ int main(){
     cout<<endl;
 
 
-    delNode(root, 10); //Deleting Leaf Node 10
-    inOrder(root); //20 25 30 35 40 45 50 55 60 65 70 75 80 85
+    delNode(root, 25); //Deleting Leaf Node 25
+    inOrder(root); //10 20 30 35 40 45 50 55 60 65 70 75 80 85
     cout<<endl;
      /*
                       50
@@ -112,14 +112,14 @@ int main(){
                  30        70
                /    \     /    \
              20      40  60     80
-               \    /  \  / \   /  \
-               25 35  45 55 65 75  85
+            /       /  \  / \   /  \
+           10     35  45 55 65 75  85
 */
 
     
 
     delNode(root, 20); //deleting node with one child
-    inOrder(root);  //25 30 35 40 45 50 55 60 65 70 75 80 85
+    inOrder(root);  //10 30 35 40 45 50 55 60 65 70 75 80 85
     cout<<endl;
 
 /*
@@ -127,20 +127,20 @@ int main(){
                    /      \
                  30        70
                /    \     /    \
-             25      40  60     80
+             10      40  60     80
                     /  \  / \   /  \
                    35  45 55 65 75  85
 */
 
     delNode(root, 30);
-    inOrder(root);
+    inOrder(root); //25 35 40 45 50 55 60 65 70 75 80 85
     cout<<endl;
 /*
                       50
                    /      \
                  35        70
                /    \     /    \
-             25      40  60     80
+             10      40  60     80
                        \  / \   /  \
                        45 55 65 75  85
 
