@@ -15,6 +15,34 @@ class Node{
         }
 };
 
+void storeInorder(Node *root, vector<int> &nodes){
+    if(root == nullptr) return;
+
+    storeInorder(root->left, nodes);
+    nodes.push_back(root->data);
+    storeInorder(root->right, nodes);
+}
+
+Node *buildBalancedTree(vector<int> &nodes, int start, int end){
+    if(start > end) return nullptr;
+
+    int mid = (start + end) / 2;
+
+    Node *root = new Node(nodes[mid]);
+    root->left = buildBalancedTree(nodes, start, mid-1);
+    root->right = buildBalancedTree(nodes, mid+1, end);
+
+    return root;
+}
+
+Node *balanceBST(Node *root){
+    vector<int> nodes;
+
+    storeInorder(root, nodes);
+
+    return buildBalancedTree(nodes, 0, nodes.size()-1);
+}
+
 void inOrder(Node *root){
     if(root == nullptr) return;
 
@@ -24,6 +52,7 @@ void inOrder(Node *root){
 }
 
 int main(){
+
     //Constructing an unbalanced BST
     //          10
     //         /  \
@@ -41,6 +70,17 @@ int main(){
     root->right->right = new Node(20);
 
     inOrder(root); //1 2 5 10 15 20
+    cout<<endl;
+
+    Node *balancedRoot = balanceBST(root);
+    inOrder(balancedRoot); //1 2 5 10 15 20
+    
+    //Constructing balanced BST
+    //          10
+    //         /  \
+    //        2   15
+    //      /  \   \
+    //     1    5    20
 
     return 0;
 }
