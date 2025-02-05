@@ -15,7 +15,14 @@ class Node{
 }
 
 int main(){
-    //Construct an unbalanced BST
+    //Constructing an unbalanced BST
+    //          10
+    //         /  \
+    //        5   15
+    //       /      \
+    //      2        20
+    //     /
+    //    1
 
     Node *root = new Node(10);
     root->left = new Node(5);
