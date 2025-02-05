@@ -35,9 +35,9 @@ int main(){
     cout<<"Adjaceny Matrix: "<<endl;
     displayMatrix(mat);
 
-    /* mat = {{0, 1, 0, 0},
+    /* mat = {{0, 1, 1, 0},
               {1, 0, 1, 0},
-              {0, 1, 0, 1},
+              {1, 1, 0, 1},
               {0, 0, 1, 0}}*/
 
     return 0;
