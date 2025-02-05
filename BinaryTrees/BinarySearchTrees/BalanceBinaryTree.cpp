@@ -76,11 +76,11 @@ int main(){
     inOrder(balancedRoot); //1 2 5 10 15 20
     
     //Constructing balanced BST
-    //          10
-    //         /  \
-    //        2   15
-    //      /  \   \
-    //     1    5    20
+    //           5
+    //         /   \
+    //       1     15
+    //     /  \   /   \
+    //    N   2  10    20
 
     return 0;
 }
