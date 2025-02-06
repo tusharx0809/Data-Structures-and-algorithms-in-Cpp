@@ -6,6 +6,7 @@
     <a href="https://github.com/tusharx0809/Data-Structures-and-algorithms-in-Cpp/tree/main/stacks"><li>Stacks</li></a>
     <a href="https://github.com/tusharx0809/Data-Structures-and-algorithms-in-Cpp/tree/main/queues"><li>Queues</li></a>
     <a href="https://github.com/tusharx0809/Data-Structures-and-algorithms-in-Cpp/tree/main/BinaryTrees"><li>Binary Trees</li></a>
+    <a href="https://github.com/tusharx0809/Data-Structures-and-algorithms-in-Cpp/tree/main/Graphs"><li>Graphs</li></a>
 </ul>
 
 <h3>Tips and Tricks to solve DSA problems</h3>
