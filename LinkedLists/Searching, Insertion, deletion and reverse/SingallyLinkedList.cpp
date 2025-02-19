@@ -60,7 +60,7 @@ public:
         int pos = 1;
 
         Node *temp = head;
-        while (position - 1 != pos)
+        while (temp->next && pos < position - 1)
         {
             pos++;
             temp = temp->next;
@@ -117,7 +117,7 @@ public:
         }
         int pos = 1;
         Node *temp = head;
-        while (position - 1 != pos)
+        while (temp->next && pos < position - 1)
         {
             pos++;
             temp = temp->next;
