@@ -59,6 +59,4 @@ int main(){
     dijkstra(graph, 0);
 
     return 0;
-
-    return 0;
 }
